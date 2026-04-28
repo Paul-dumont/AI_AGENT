@@ -1,0 +1,138 @@
+{
+    "model": "llama3:latest",
+    "metrics": {
+        "total_queries": 14,
+        "correct_predictions": 13,
+        "accuracy_percentage": 92.86,
+        "average_latency_seconds": 10.1567,
+        "total_execution_time_seconds": 142.1938
+    },
+    "details": [
+        {
+            "prompt": "identify landmarks on CBCT scans",
+            "expected_tool": "ali_cbct",
+            "Selected_tool": "ali_cbct",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 32.5579,
+            "reasoning": "The request is to identify landmarks on CBCT scans, which is a key feature of the ali_cbct tool."
+        },
+        {
+            "prompt": "automatic landmark detection on intraoral scans",
+            "expected_tool": "ali_ios",
+            "Selected_tool": "ali_ios",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 10.1463,
+            "reasoning": "Based on the provided tool manifest, I recommend using 'ali_ios' for automatic landmark detection on intraoral scans. This tool is specifically designed to detect dental and anatomical landmarks on 3D surface meshes from intraoral scanners for orthodontic and prosthodontic analysis."
+        },
+        {
+            "prompt": "segment dental anatomical structures",
+            "expected_tool": "amasss_cli",
+            "Selected_tool": "batchdentalseg",
+            "Correct?": false,
+            "Confidence": 0.8,
+            "Latency": 7.4336,
+            "reasoning": "Batch Dental Segmentation using nnUNet in 3D Slicer is the most relevant tool for segmenting dental anatomical structures from CBCT scans."
+        },
+        {
+            "prompt": "register baseline and follow-up CBCT images",
+            "expected_tool": "areg_cbct",
+            "Selected_tool": "areg_cbct",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 10.1593,
+            "reasoning": "The request to register baseline and follow-up CBCT images suggests the need for a tool that can align and match anatomical structures across different time points. Based on this requirement, I recommend using the 'Automatic Registration of CBCT images' (areg_cbct) tool."
+        },
+        {
+            "prompt": "register intraoral scan surfaces",
+            "expected_tool": "areg_ios",
+            "Selected_tool": "areg_ios",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 8.6305,
+            "reasoning": "Based on the provided tags, 'ios' and 'registration', I recommend using the 'Automatic Registration of Intraoral Scans using Iterative Closest Point (ICP)' tool to register intraoral scan surfaces."
+        },
+        {
+            "prompt": "crop region of interest from 3D volume",
+            "expected_tool": "autocrop3d",
+            "Selected_tool": "autocrop3d",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 6.6606,
+            "reasoning": "The tool 'Autocrop3d' is the most relevant for cropping a region of interest from a 3D volume."
+        },
+        {
+            "prompt": "apply transformation matrix to scans",
+            "expected_tool": "automatrix",
+            "Selected_tool": "automatrix",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 5.3757,
+            "reasoning": "The tool 'Automatrix' is the most relevant for applying a transformation matrix to scans."
+        },
+        {
+            "prompt": "batch dental segmentation using nnUNet",
+            "expected_tool": "batchdentalseg",
+            "Selected_tool": "batchdentalseg",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 8.1122,
+            "reasoning": "Based on the provided information, I recommend using 'Batch Dental Segmentation using nnUNet in 3D Slicer' (batchdentalseg) for your dental imaging analysis needs."
+        },
+        {
+            "prompt": "CBCT segmentation with Mask R-CNN",
+            "expected_tool": "clic",
+            "Selected_tool": "clic",
+            "Correct?": true,
+            "Confidence": 0.9,
+            "Latency": 11.8086,
+            "reasoning": "Based on the provided tool manifest, I recommend using 'CLIC' for CBCT segmentation with Mask R-CNN. CLIC is a tool that uses Mask R-CNN to perform instance segmentation of dental and anatomical structures from CBCT scans. It is integrated in 3D Slicer and supports GPU acceleration for real-time performance."
+        },
+        {
+            "prompt": "shape analysis of dental surfaces",
+            "expected_tool": "docshapeaxi",
+            "Selected_tool": "docshapeaxi",
+            "Correct?": true,
+            "Confidence": 0.8,
+            "Latency": 6.4726,
+            "reasoning": "Shape Analysis of Dental Surfaces using ShapeAXI is a relevant tool for analyzing the morphology and shape of dental surfaces."
+        },
+        {
+            "prompt": "flexible patch-based surface registration",
+            "expected_tool": "flexreg",
+            "Selected_tool": "flexreg",
+            "Correct?": true,
+            "Confidence": 0.8,
+            "Latency": 8.8077,
+            "reasoning": "Based on the provided information, I recommend using the 'flexreg' tool for flexible patch-based surface registration. This tool is specifically designed for registering 3D dental surface meshes and can handle complex deformations and tooth movements."
+        },
+        {
+            "prompt": "create medical data dashboard visualization",
+            "expected_tool": "medx_dashboard",
+            "Selected_tool": "medx_dashboard",
+            "Correct?": true,
+            "Confidence": 0.8,
+            "Latency": 8.2567,
+            "reasoning": "The MedX Dashboard is a suitable tool for creating a medical data dashboard visualization because it provides an interactive and customizable platform for exploring and summarizing clinical outcomes, measurements, and longitudinal study results."
+        },
+        {
+            "prompt": "automatic medical text summarization",
+            "expected_tool": "medx_summarize",
+            "Selected_tool": "medx_summarize",
+            "Correct?": true,
+            "Confidence": 0.8,
+            "Latency": 8.9326,
+            "reasoning": "The tool 'MedX Summarize' is the most relevant for automatic medical text summarization as it uses transformer-based NLP models to generate concise clinical summaries from patient notes (PDF, DOCX, TXT)."
+        },
+        {
+            "prompt": "MRI to CBCT approximation and preprocessing",
+            "expected_tool": "mri2cbct_approx",
+            "Selected_tool": "mri2cbct_approx",
+            "Correct?": true,
+            "Confidence": 0.8,
+            "Latency": 8.8395,
+            "reasoning": "Based on the provided information, I recommend using 'MRI to CBCT approximation and preprocessing' as it seems to be a suitable tool for processing MRI scans and preparing them for registration with CBCT images."
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+  "neural-chat (7B, optimized)": {
+    "total_tasks": 140,
+    "success": 60,
+    "failure": 80,
+    "error": 13,
+    "timeout": 0,
+    "success_rate": 0.4286
+  },
+  "phi3 (14B, very accurate)": {
+    "total_tasks": 140,
+    "success": 38,
+    "failure": 102,
+    "error": 58,
+    "timeout": 4,
+    "success_rate": 0.2714
+  },
+  "dolphin-mixtral (47B, expert)": {
+    "total_tasks": 140,
+    "success": 100,
+    "failure": 40,
+    "error": 3,
+    "timeout": 0,
+    "success_rate": 0.7143
+  },
+  "llama2-13b (13B, large)": {
+    "total_tasks": 140,
+    "success": 71,
+    "failure": 69,
+    "error": 20,
+    "timeout": 0,
+    "success_rate": 0.5071
+  }
+}
+(Si tu veux, je peux aussi te donner la liste des indices :
+28, 32, 48, 49, 55, 65, 67, 69, 71, 72, 73, 74, 78, 81, 87, 88, 90, 91, 92, 93, 94, 95, 98, 101, 108, 110, 113, 115, 122, 133.)
