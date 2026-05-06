@@ -1,21 +1,22 @@
 # ----- CONFIG -----
 import json
 import time
-import numpy as np
 from pydantic import BaseModel, Field
-from ollama import chat, embeddings
+from ollama import chat
 from pathlib import Path
+
+# ----- VARIABLES -----
+model = "llama3:latest" #
+ratio_queries = 0.1 #%
+queries_type = "tool_only" 
+# queries_type = "tool_param_expert_vocab" 
+
 
 # ----- FILE PATHS -----
 script_folder = Path(__file__).parent.resolve()
-tools_list_path = script_folder / 'input' / 'tools_list.json'
-queries_list_path = script_folder / 'input' / 'queries_list.json' 
-results_path = script_folder / 'output' / 'results.json'
-
-# ----- VARIABLES -----
-model = "llama3:latest"
-ratio_queries = 0.1 #50%
-embedding_model = "mxbai-embed-large"
+tools_list_path = script_folder.parent / 'input' / 'tools_list.json'
+queries_list_path = script_folder.parent / 'input' / 'user_queries' / f'{queries_type}.json'
+results_path = script_folder / 'output' / f'{model.replace(":", "-")}_{queries_type}.json'
 
 # ----- PYDANTIC SCHEMA -----
 class RouteDecision(BaseModel):
@@ -23,46 +24,13 @@ class RouteDecision(BaseModel):
     confidence: float = Field(description="Confidence level from 0.0 to 1.0")
     reasoning: str = Field(description="A short sentence explaining why this tool was chosen")
 
-# ----- RAG LOGIC -----
-def get_vector(text: str) -> list: 
-    return embeddings(model=embedding_model, prompt=text)['embedding']
-
-def cosine_similarity(a, b):
-    return np.dot(a ,b) / (np.linalg.norm(a) * np.linalg.norm(b))
-
-def retrive_top_tools(user_prompt:str, tools_list: list, top_k: int = 3) -> list:
-
-    query_vec = get_vector(user_prompt)
-    scrored_tools = []
-
-    for tool in tools_list:
-        tool_desc = tool.get('description', str(tool))
-        tool_vec = get_vector(tool_desc)
-        score = cosine_similarity(query_vec, tool_vec)
-        scrored_tools.append((score, tool))
-
-    scrored_tools.sort(key=lambda x: x[0], reverse=True)
-    top_result = scrored_tools[:top_k]
-
-    # ----- LOG RAG -----
-    for i,(score,tool) in enumerate(top_result):
-        tool_name = tool.get('name','unknow_name')
-        print(f"{i+1} Score: {score:.4f} tools: {tool_name}")
-
-
-    return [t[1] for t in top_result]
-
 # ----- AGENT LOGIC -----
 def agent_router(user_prompt: str, manifest: dict, model_name: str) -> RouteDecision:
     
-    relevant_tools = retrive_top_tools(user_prompt, manifest, top_k=3)
-
-
     system_prompt = f"""You are a Router Agent expert in medical and dental imaging (CBCT, IOS, MRI).
-    Your role is to analyze the user's request and select the most relevant tool from the FILTERED list below.
-    If none of these {len(relevant_tools)} tools fit, return 'none'.
+    Your role is to analyze the user's request and select the most relevant tool from the provided list.
 
-    Relevant Tools Subset:{json.dumps(relevant_tools, indent=2)}
+    Here is the complete tool manifest:{json.dumps(manifest, indent=2)}
     """
     
     response = chat(
