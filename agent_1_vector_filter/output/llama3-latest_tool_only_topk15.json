@@ -1,0 +1,1274 @@
+{
+    "model": "llama3:latest",
+    "metrics": {
+        "total_queries": 140,
+        "rag_correct": 139,
+        "rag_accuracy": 99.29,
+        "llm_correct": 105,
+        "llm_accuracy": 75.0,
+        "average_latency": 1.8506,
+        "total_time": 259.0886
+    },
+    "details": [
+        {
+            "prompt": "identify landmarks on CBCT scans",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, ali_ios, areg_cbct, pre_aso_cbct, autocrop3d, semi_aso_ios, clic, mri2cbct_approx, amasss_cli, batchdentalseg, mri2cbct_reg, mri2cbct_lr_crop, docshapeaxi, pre_aso_ios ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 4.3231,
+            "reasoning": "The user wants to identify landmarks on CBCT scans, which suggests they are looking for anatomical reference points on cone-beam CT volumes for precise dental and maxillofacial measurements and analysis. This task is typically performed using AI agents."
+        },
+        {
+            "prompt": "automatic landmark detection on intraoral scans",
+            "expected_tool": "ali_ios",
+            "rag_prediction": "ali_ios, ali_cbct, semi_aso_ios, pre_aso_ios, areg_ios, semi_aso_cbct, batchdentalseg, amasss_cli, docshapeaxi, autocrop3d, pre_aso_cbct, clic, areg_cbct, mri2cbct_tmj_crop, mri2cbct_approx ✅",
+            "llm_prediction": "ali_ios ✅",
+            "Confidence": 1.0,
+            "Latency": 1.6707,
+            "reasoning": "The user is asking for automatic landmark detection on intraoral scans, which matches the functionality of ali_ios: Automatic Landmark Identification in Intraoral Scans (IOS)."
+        },
+        {
+            "prompt": "segment dental anatomical structures",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "batchdentalseg, amasss_cli, semi_aso_ios, pre_aso_ios, ali_ios, semi_aso_cbct, docshapeaxi, clic, flexreg, mri2cbct_tmj_crop, mri2cbct_lr_crop, areg_ios, ali_cbct, autocrop3d, pre_aso_cbct ✅",
+            "llm_prediction": "amasss_cli ✅",
+            "Confidence": 0.9,
+            "Latency": 2.8688,
+            "reasoning": "The user is asking to segment dental anatomical structures, which suggests they are looking for a tool that can automatically identify and separate different parts of the teeth and surrounding bone from CBCT scans. Based on this requirement, I recommend using 'amasss_cli' as it uses nnUNet-based models trained on dental CBCT data to automatically segment maxilla, mandible, and other anatomical structures."
+        },
+        {
+            "prompt": "register baseline and follow-up CBCT images",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "areg_cbct, mri2cbct_reg, pre_aso_cbct, semi_aso_cbct, mri2cbct_approx, areg_ios, ali_cbct, clic, autocrop3d, batchdentalseg, mri2cbct_resample, automatrix, amasss_cli, mri2cbct_lr_crop, mri2cbct_orient_center ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.457,
+            "reasoning": "The user wants to register baseline and follow-up CBCT images, which suggests a longitudinal study or tracking anatomical changes over time."
+        },
+        {
+            "prompt": "register intraoral scan surfaces",
+            "expected_tool": "areg_ios",
+            "rag_prediction": "areg_ios, flexreg, pre_aso_ios, ali_ios, semi_aso_ios, areg_cbct, batchdentalseg, docshapeaxi, mri2cbct_reg, semi_aso_cbct, ali_cbct, pre_aso_cbct, amasss_cli, automatrix, clic ✅",
+            "llm_prediction": "areg_ios ✅",
+            "Confidence": 1.0,
+            "Latency": 2.771,
+            "reasoning": "The user is asking to register intraoral scan surfaces, which suggests they want to align and match 3D surface meshes from multiple scans taken at different times or with different scanners. Based on this requirement, the most relevant tool is 'areg_ios' (Automatic Registration of Intraoral Scans using Iterative Closest Point (ICP)). This tool registers baseline and follow-up IOS surfaces for longitudinal dental tracking and treatment outcome assessment."
+        },
+        {
+            "prompt": "crop region of interest from 3D volume",
+            "expected_tool": "autocrop3d",
+            "rag_prediction": "autocrop3d, mri2cbct_tmj_crop, mri2cbct_lr_crop, pre_aso_cbct, semi_aso_ios, pre_aso_ios, semi_aso_cbct, clic, mri2cbct_resample, mri2cbct_orient_center, docshapeaxi, ali_cbct, amasss_cli, ali_ios, mri2cbct_approx ✅",
+            "llm_prediction": "autocrop3d ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0736,
+            "reasoning": "The user wants to crop a region of interest (ROI) from a 3D medical image, which is typically done for focused analysis or extraction. Based on this requirement, the most relevant tool is **autocrop3d**."
+        },
+        {
+            "prompt": "apply transformation matrix to scans",
+            "expected_tool": "automatrix",
+            "rag_prediction": "automatrix, pre_aso_cbct, mri2cbct_approx, areg_cbct, pre_aso_ios, mri2cbct_resample, semi_aso_cbct, mri2cbct_orient_center, areg_ios, mri2cbct_reg, docshapeaxi, autocrop3d, batchdentalseg, semi_aso_ios, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "automatrix ✅",
+            "Confidence": 0.9,
+            "Latency": 2.5852,
+            "reasoning": "The user wants to apply a transformation matrix to scans, which suggests they are looking for a tool that can perform rigid or affine transformations on medical images and 3D surface meshes. Given the tags 'transformation', 'matrix', 'deformation', 'registration', 'alignment', 'affine', and 'rigid' in the filtered tools, I recommend using **automatrix**."
+        },
+        {
+            "prompt": "batch dental segmentation using nnUNet",
+            "expected_tool": "batchdentalseg",
+            "rag_prediction": "batchdentalseg, amasss_cli, clic, mri2cbct_tmj_crop, pre_aso_ios, docshapeaxi, areg_ios, semi_aso_ios, mri2cbct_approx, ali_cbct, autocrop3d, semi_aso_cbct, pre_aso_cbct, mri2cbct_reg, areg_cbct ✅",
+            "llm_prediction": "batchdentalseg ✅",
+            "Confidence": 0.9,
+            "Latency": 2.6076,
+            "reasoning": "The user is asking for batch dental segmentation, which suggests they want to process multiple scans at once. Given this requirement, I will prioritize tools designed for batching. Among the filtered options, batchdentalseg stands out as a strong candidate due to its support for automated segmentation of dental structures from CBCT scans using pre-trained nnUNet deep learning models with batch processing capabilities."
+        },
+        {
+            "prompt": "CBCT segmentation with Mask R-CNN",
+            "expected_tool": "clic",
+            "rag_prediction": "clic, batchdentalseg, amasss_cli, areg_cbct, mri2cbct_approx, pre_aso_cbct, mri2cbct_reg, semi_aso_cbct, autocrop3d, mri2cbct_tmj_crop, ali_cbct, mri2cbct_resample, mri2cbct_lr_crop, docshapeaxi, automatrix ✅",
+            "llm_prediction": "clic ✅",
+            "Confidence": 1.0,
+            "Latency": 1.8806,
+            "reasoning": "The user is asking for CBCT segmentation with Mask R-CNN, which suggests they want to perform instance segmentation of dental and anatomical structures from CBCT scans using Mask R-CNN. Given this requirement, the most relevant tool is clic."
+        },
+        {
+            "prompt": "shape analysis of dental surfaces",
+            "expected_tool": "docshapeaxi",
+            "rag_prediction": "docshapeaxi, pre_aso_ios, ali_ios, semi_aso_ios, flexreg, batchdentalseg, areg_ios, clic, amasss_cli, ali_cbct, automatrix, semi_aso_cbct, mri2cbct_approx, autocrop3d, pre_aso_cbct ✅",
+            "llm_prediction": "docshapeaxi ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3139,
+            "reasoning": "The user is requesting shape analysis of dental surfaces, which suggests a focus on morphometric feature extraction and statistical shape analysis."
+        },
+        {
+            "prompt": "flexible patch-based surface registration",
+            "expected_tool": "flexreg",
+            "rag_prediction": "flexreg, areg_ios, semi_aso_ios, mri2cbct_approx, areg_cbct, mri2cbct_reg, mri2cbct_orient_center, automatrix, ali_ios, docshapeaxi, autocrop3d, semi_aso_cbct, pre_aso_cbct, pre_aso_ios, ali_cbct ✅",
+            "llm_prediction": "flexreg ✅",
+            "Confidence": 1.0,
+            "Latency": 1.9874,
+            "reasoning": "The user is asking for flexible patch-based surface registration, which suggests they want to register 3D dental surface meshes using patch-based deformable registration with butterfly and curve patch methods for precision tooth movement tracking. Based on this requirement, the most relevant tool is **flexreg**."
+        },
+        {
+            "prompt": "create medical data dashboard visualization",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, medx_summarize, docshapeaxi, areg_ios, mri2cbct_orient_center, amasss_cli, semi_aso_ios, automatrix, mri2cbct_approx, autocrop3d, mri2cbct_tmj_crop, pre_aso_ios, mri2cbct_reg, ali_ios, flexreg ✅",
+            "llm_prediction": "medx_dashboard ✅",
+            "Confidence": 0.9,
+            "Latency": 1.2437,
+            "reasoning": "The user is requesting a medical data dashboard for visual exploration of clinical outcomes, measurements, and longitudinal study results."
+        },
+        {
+            "prompt": "automatic medical text summarization",
+            "expected_tool": "medx_summarize",
+            "rag_prediction": "medx_summarize, medx_dashboard, mri2cbct_tmj_crop, batchdentalseg, mri2cbct_approx, amasss_cli, autocrop3d, docshapeaxi, pre_aso_cbct, mri2cbct_orient_center, semi_aso_cbct, ali_cbct, areg_cbct, mri2cbct_reg, automatrix ✅",
+            "llm_prediction": "medx_summarize ✅",
+            "Confidence": 1.0,
+            "Latency": 1.3398,
+            "reasoning": "The user is asking for automatic medical text summarization, which matches the functionality of medx_summarize."
+        },
+        {
+            "prompt": "MRI to CBCT approximation and preprocessing",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, pre_aso_cbct, mri2cbct_resample, semi_aso_cbct, areg_cbct, amasss_cli, autocrop3d, clic, mri2cbct_tmj_crop, batchdentalseg, mri2cbct_orient_center, mri2cbct_lr_crop, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.8688,
+            "reasoning": "The user is asking for MRI to CBCT approximation and preprocessing, which suggests they want to register MRI scans with CBCT scans. Based on this request, I will select the tool that best fits their needs."
+        },
+        {
+            "prompt": "register MRI to CBCT images",
+            "expected_tool": "mri2cbct_reg",
+            "rag_prediction": "mri2cbct_reg, mri2cbct_approx, areg_cbct, pre_aso_cbct, mri2cbct_resample, semi_aso_cbct, mri2cbct_orient_center, mri2cbct_lr_crop, autocrop3d, mri2cbct_tmj_crop, batchdentalseg, clic, areg_ios, automatrix, ali_cbct ✅",
+            "llm_prediction": "mri2cbct_reg ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0379,
+            "reasoning": "The user is asking to register MRI to CBCT images, which suggests a multimodal registration task. After analyzing the filtered tools, I recommend using 'mri2cbct_reg' as it specifically handles MRI-to-CBCT image registration with intensity normalization."
+        },
+        {
+            "prompt": "crop left-right asymmetry analysis volumes",
+            "expected_tool": "mri2cbct_lr_crop",
+            "rag_prediction": "mri2cbct_lr_crop, mri2cbct_tmj_crop, autocrop3d, pre_aso_cbct, mri2cbct_orient_center, pre_aso_ios, semi_aso_cbct, semi_aso_ios, docshapeaxi, mri2cbct_resample, areg_cbct, mri2cbct_approx, mri2cbct_reg, batchdentalseg, areg_ios ✅",
+            "llm_prediction": "mri2cbct_lr_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 1.8253,
+            "reasoning": "The user is asking for cropping and asymmetry analysis, which suggests they want to extract specific regions from registered MRI-CBCT pairs for bilateral morphometric comparison. Based on this, the most relevant tool is..."
+        },
+        {
+            "prompt": "orient and center MRI for standardization",
+            "expected_tool": "mri2cbct_orient_center",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, mri2cbct_approx, mri2cbct_reg, semi_aso_cbct, mri2cbct_resample, semi_aso_ios, mri2cbct_tmj_crop, mri2cbct_lr_crop, pre_aso_ios, areg_cbct, autocrop3d, ali_cbct, areg_ios, ali_ios ✅",
+            "llm_prediction": "mri2cbct_orient_center ✅",
+            "Confidence": 0.9,
+            "Latency": 1.1634,
+            "reasoning": "The user is asking to orient and center MRI scans for standardized positioning."
+        },
+        {
+            "prompt": "resample MRI and CBCT to uniform spacing",
+            "expected_tool": "mri2cbct_resample",
+            "rag_prediction": "mri2cbct_resample, mri2cbct_approx, mri2cbct_reg, pre_aso_cbct, areg_cbct, mri2cbct_lr_crop, autocrop3d, mri2cbct_tmj_crop, batchdentalseg, semi_aso_cbct, mri2cbct_orient_center, amasss_cli, clic, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_resample ✅",
+            "Confidence": 1.0,
+            "Latency": 1.6768,
+            "reasoning": "The user wants to resample MRI and CBCT scans to uniform spacing, which is a preprocessing step for standardized processing and compatibility with subsequent deep learning or analysis pipelines."
+        },
+        {
+            "prompt": "temporomandibular joint region segmentation",
+            "expected_tool": "mri2cbct_tmj_crop",
+            "rag_prediction": "mri2cbct_tmj_crop, mri2cbct_lr_crop, batchdentalseg, amasss_cli, autocrop3d, pre_aso_ios, semi_aso_ios, docshapeaxi, pre_aso_cbct, semi_aso_cbct, mri2cbct_approx, mri2cbct_reg, clic, mri2cbct_orient_center, ali_cbct ✅",
+            "llm_prediction": "mri2cbct_tmj_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.2944,
+            "reasoning": "The user is asking for temporomandibular joint (TMJ) region segmentation, which suggests they want to extract and analyze the TMJ area from medical images. Given this requirement, I will select a tool that can automatically segment and crop the TMJ region from MRI or CBCT scans."
+        },
+        {
+            "prompt": "preprocess CBCT for automatic segmentation",
+            "expected_tool": "pre_aso_cbct",
+            "rag_prediction": "pre_aso_cbct, semi_aso_cbct, batchdentalseg, mri2cbct_approx, clic, amasss_cli, areg_cbct, autocrop3d, pre_aso_ios, ali_cbct, mri2cbct_reg, automatrix, mri2cbct_tmj_crop, mri2cbct_resample, semi_aso_ios ✅",
+            "llm_prediction": "pre_aso_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4593,
+            "reasoning": "The user wants to preprocess CBCT scans for automatic segmentation, which suggests they want to standardize and orient their scans for subsequent automated pipelines."
+        },
+        {
+            "prompt": "preprocess intraoral scan for orientation",
+            "expected_tool": "pre_aso_ios",
+            "rag_prediction": "pre_aso_ios, semi_aso_ios, pre_aso_cbct, semi_aso_cbct, ali_ios, areg_ios, mri2cbct_orient_center, ali_cbct, batchdentalseg, mri2cbct_approx, docshapeaxi, flexreg, amasss_cli, areg_cbct, autocrop3d ✅",
+            "llm_prediction": "pre_aso_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.5947,
+            "reasoning": "The user is asking to preprocess an intraoral (IOS) scan for orientation, which suggests they want to standardize the coordinate frame and tooth-specific segmentation for analysis."
+        },
+        {
+            "prompt": "semi-automatic CBCT orientation using landmarks",
+            "expected_tool": "semi_aso_cbct",
+            "rag_prediction": "semi_aso_cbct, ali_cbct, pre_aso_cbct, semi_aso_ios, areg_cbct, mri2cbct_reg, mri2cbct_approx, autocrop3d, clic, amasss_cli, mri2cbct_orient_center, batchdentalseg, ali_ios, automatrix, pre_aso_ios ✅",
+            "llm_prediction": "semi_aso_cbct ✅",
+            "Confidence": 1.0,
+            "Latency": 2.0681,
+            "reasoning": "The user is looking for a semi-automatic CBCT orientation method that uses landmarks, which suggests they want to combine manual landmark placement with ICP-based registration to standardize and orient their CBCT scans. Based on this requirement, the most relevant tool is **semi_aso_cbct**."
+        },
+        {
+            "prompt": "semi-automatic IOS orientation using landmarks",
+            "expected_tool": "semi_aso_ios",
+            "rag_prediction": "semi_aso_ios, ali_ios, pre_aso_ios, semi_aso_cbct, mri2cbct_orient_center, areg_ios, ali_cbct, pre_aso_cbct, automatrix, flexreg, autocrop3d, mri2cbct_approx, mri2cbct_tmj_crop, areg_cbct, docshapeaxi ✅",
+            "llm_prediction": "semi_aso_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.7077,
+            "reasoning": "The user is asking for semi-automatic IOS orientation using landmarks, which suggests they want to use anatomical landmarks on dental surfaces with ICP registration to establish canonical tooth and jaw coordinate frames for analysis."
+        },
+        {
+            "prompt": "detect landmark points on my CBCT",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, autocrop3d, ali_ios, clic, pre_aso_cbct, semi_aso_ios, areg_cbct, mri2cbct_approx, batchdentalseg, mri2cbct_reg, amasss_cli, mri2cbct_lr_crop, docshapeaxi, automatrix ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3507,
+            "reasoning": "The user wants to detect landmark points on their CBCT scan, which suggests they are looking for automated anatomical reference point identification."
+        },
+        {
+            "prompt": "find feature points in intraoral scans",
+            "expected_tool": "ali_ios",
+            "rag_prediction": "ali_ios, ali_cbct, pre_aso_ios, semi_aso_ios, areg_ios, semi_aso_cbct, batchdentalseg, docshapeaxi, amasss_cli, autocrop3d, clic, flexreg, pre_aso_cbct, mri2cbct_tmj_crop, mri2cbct_approx ✅",
+            "llm_prediction": "ali_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3835,
+            "reasoning": "The user is looking for a tool to find feature points in intraoral scans, which suggests they are interested in dental and anatomical landmarks."
+        },
+        {
+            "prompt": "segment teeth from 3D scan",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "batchdentalseg, pre_aso_ios, semi_aso_ios, clic, ali_ios, docshapeaxi, amasss_cli, areg_ios, semi_aso_cbct, autocrop3d, flexreg, pre_aso_cbct, ali_cbct, mri2cbct_approx, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "amasss_cli ✅",
+            "Confidence": 0.9,
+            "Latency": 1.7402,
+            "reasoning": "The user wants to segment teeth from a 3D scan, which suggests instance segmentation of dental structures. Given this requirement, I will prioritize tools that support instance segmentation and are designed for dental applications."
+        },
+        {
+            "prompt": "align CBCT images before and after",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "pre_aso_cbct, semi_aso_cbct, areg_cbct, mri2cbct_approx, mri2cbct_reg, autocrop3d, mri2cbct_resample, mri2cbct_lr_crop, ali_cbct, automatrix, mri2cbct_orient_center, clic, pre_aso_ios, batchdentalseg, amasss_cli ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 2.3963,
+            "reasoning": "The user is asking to align CBCT images before and after, which suggests a longitudinal study or tracking anatomical changes over time. Given this context, I will prioritize tools that perform registration or alignment of CBCT scans. After careful analysis, I recommend the following tool: areg_cbct: Automatic Registration of CBCT images for longitudinal studies."
+        },
+        {
+            "prompt": "align two dental scan surfaces",
+            "expected_tool": "areg_ios",
+            "rag_prediction": "areg_ios, pre_aso_ios, semi_aso_cbct, semi_aso_ios, flexreg, mri2cbct_orient_center, ali_ios, pre_aso_cbct, mri2cbct_approx, areg_cbct, docshapeaxi, mri2cbct_lr_crop, batchdentalseg, mri2cbct_reg, ali_cbct ✅",
+            "llm_prediction": "flexreg ❌",
+            "Confidence": 0.9,
+            "Latency": 2.1555,
+            "reasoning": "The user is asking to align two dental scan surfaces, which suggests a registration task. Since the scans are likely intraoral (IOS) or CBCT, I will focus on tools that handle surface registration. After analyzing the options, I recommend using 'flexreg' for flexible patch-based registration of dental surfaces."
+        },
+        {
+            "prompt": "extract area of interest from volume",
+            "expected_tool": "autocrop3d",
+            "rag_prediction": "autocrop3d, mri2cbct_tmj_crop, mri2cbct_lr_crop, pre_aso_cbct, semi_aso_cbct, pre_aso_ios, docshapeaxi, semi_aso_ios, mri2cbct_orient_center, batchdentalseg, ali_cbct, mri2cbct_resample, amasss_cli, clic, ali_ios ✅",
+            "llm_prediction": "autocrop3d ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3828,
+            "reasoning": "The user wants to extract a specific region of interest (ROI) from a 3D volumetric medical image."
+        },
+        {
+            "prompt": "apply geometric transformation to scan",
+            "expected_tool": "automatrix",
+            "rag_prediction": "automatrix, pre_aso_cbct, mri2cbct_orient_center, mri2cbct_approx, semi_aso_cbct, pre_aso_ios, mri2cbct_resample, areg_cbct, areg_ios, semi_aso_ios, autocrop3d, docshapeaxi, mri2cbct_reg, ali_ios, flexreg ✅",
+            "llm_prediction": "automatrix ✅",
+            "Confidence": 0.9,
+            "Latency": 1.8643,
+            "reasoning": "The user wants to apply a geometric transformation to a scan, which suggests they are looking for a tool that can perform transformations such as rigid, affine, or deformable registration. Based on this, the most relevant tool is **automatrix**."
+        },
+        {
+            "prompt": "segment multiple dental scans batch",
+            "expected_tool": "batchdentalseg",
+            "rag_prediction": "batchdentalseg, pre_aso_ios, clic, semi_aso_cbct, areg_ios, amasss_cli, pre_aso_cbct, semi_aso_ios, mri2cbct_tmj_crop, areg_cbct, mri2cbct_approx, autocrop3d, ali_cbct, docshapeaxi, ali_ios ✅",
+            "llm_prediction": "batchdentalseg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.9531,
+            "reasoning": "The user is asking to segment multiple dental scans in a batch, which suggests they want to automate the process for a large number of scans. Given this requirement, I will prioritize tools that support batch processing and can handle multiple scans simultaneously."
+        },
+        {
+            "prompt": "segment dental structures from CBCT",
+            "expected_tool": "clic",
+            "rag_prediction": "batchdentalseg, amasss_cli, clic, semi_aso_cbct, pre_aso_cbct, autocrop3d, ali_cbct, semi_aso_ios, pre_aso_ios, areg_cbct, mri2cbct_approx, mri2cbct_tmj_crop, docshapeaxi, mri2cbct_lr_crop, mri2cbct_reg ✅",
+            "llm_prediction": "batchdentalseg ❌",
+            "Confidence": 0.9,
+            "Latency": 1.9577,
+            "reasoning": "The user is asking to segment dental structures from CBCT scans, which suggests they want to automatically identify and separate different anatomical components such as teeth, bone, and soft tissue. Based on this requirement, the most relevant tool is batchdentalseg."
+        },
+        {
+            "prompt": "analyze dental surface geometry",
+            "expected_tool": "docshapeaxi",
+            "rag_prediction": "docshapeaxi, pre_aso_ios, ali_ios, semi_aso_ios, flexreg, areg_ios, batchdentalseg, clic, amasss_cli, ali_cbct, semi_aso_cbct, autocrop3d, automatrix, pre_aso_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "docshapeaxi ✅",
+            "Confidence": 0.9,
+            "Latency": 1.7887,
+            "reasoning": "The user is asking to analyze dental surface geometry, which suggests a focus on shape and morphology analysis. Given this requirement, I will prioritize tools that can perform statistical shape analysis and classification of 3D dental meshes."
+        },
+        {
+            "prompt": "register dental surfaces using patches",
+            "expected_tool": "flexreg",
+            "rag_prediction": "flexreg, areg_ios, docshapeaxi, semi_aso_ios, batchdentalseg, pre_aso_ios, ali_ios, areg_cbct, mri2cbct_reg, ali_cbct, clic, automatrix, semi_aso_cbct, autocrop3d, mri2cbct_approx ✅",
+            "llm_prediction": "flexreg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3947,
+            "reasoning": "The user is asking to register dental surfaces using patches, which suggests a deformable registration approach with patch-based methods for precision tooth movement tracking."
+        },
+        {
+            "prompt": "build visualization dashboard for data",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, medx_summarize, docshapeaxi, pre_aso_ios, ali_ios, mri2cbct_orient_center, semi_aso_ios, amasss_cli, autocrop3d, areg_ios, ali_cbct, flexreg, clic, semi_aso_cbct, batchdentalseg ✅",
+            "llm_prediction": "medx_dashboard ✅",
+            "Confidence": 0.9,
+            "Latency": 1.5467,
+            "reasoning": "The user is asking to build a visualization dashboard for their medical or dental imaging data, which suggests they want to explore and analyze their data in an interactive way."
+        },
+        {
+            "prompt": "summarize medical report text",
+            "expected_tool": "medx_summarize",
+            "rag_prediction": "medx_summarize, medx_dashboard, batchdentalseg, mri2cbct_approx, mri2cbct_tmj_crop, areg_cbct, docshapeaxi, pre_aso_cbct, amasss_cli, autocrop3d, mri2cbct_lr_crop, mri2cbct_reg, automatrix, mri2cbct_resample, mri2cbct_orient_center ✅",
+            "llm_prediction": "medx_summarize ✅",
+            "Confidence": 0.9,
+            "Latency": 1.0467,
+            "reasoning": "The user is asking to summarize medical report text."
+        },
+        {
+            "prompt": "approximate MRI to CBCT space",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, mri2cbct_resample, pre_aso_cbct, areg_cbct, autocrop3d, mri2cbct_tmj_crop, amasss_cli, batchdentalseg, semi_aso_cbct, mri2cbct_lr_crop, clic, mri2cbct_orient_center, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.8685,
+            "reasoning": "The user wants to approximate MRI to CBCT space, which suggests a registration process that aligns the two imaging modalities. Based on this requirement, I recommend using the `mri2cbct_approx` tool."
+        },
+        {
+            "prompt": "match MRI with CBCT coordinates",
+            "expected_tool": "mri2cbct_reg",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, mri2cbct_resample, pre_aso_cbct, mri2cbct_orient_center, areg_cbct, semi_aso_cbct, ali_cbct, mri2cbct_lr_crop, autocrop3d, mri2cbct_tmj_crop, amasss_cli, clic, batchdentalseg, automatrix ✅",
+            "llm_prediction": "mri2cbct_reg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3742,
+            "reasoning": "The user wants to match MRI with CBCT coordinates, which suggests a registration task between the two modalities."
+        },
+        {
+            "prompt": "extract left-right comparison region",
+            "expected_tool": "mri2cbct_lr_crop",
+            "rag_prediction": "mri2cbct_lr_crop, mri2cbct_tmj_crop, autocrop3d, mri2cbct_orient_center, semi_aso_cbct, pre_aso_cbct, semi_aso_ios, pre_aso_ios, batchdentalseg, ali_ios, ali_cbct, docshapeaxi, mri2cbct_approx, areg_ios, clic ✅",
+            "llm_prediction": "mri2cbct_lr_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.1419,
+            "reasoning": "The user wants to extract a region for left-right comparison, which suggests they are interested in analyzing asymmetry or bilateral morphometry. Given this requirement, I will select a tool that can crop and segment the desired regions from registered MRI-CBCT pairs."
+        },
+        {
+            "prompt": "center and orient MRI volume",
+            "expected_tool": "mri2cbct_orient_center",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, mri2cbct_reg, mri2cbct_resample, mri2cbct_approx, semi_aso_cbct, mri2cbct_tmj_crop, mri2cbct_lr_crop, semi_aso_ios, pre_aso_ios, autocrop3d, areg_cbct, ali_cbct, ali_ios, areg_ios ✅",
+            "llm_prediction": "mri2cbct_orient_center ✅",
+            "Confidence": 0.9,
+            "Latency": 1.687,
+            "reasoning": "The user wants to center and orient an MRI volume, which suggests they need a tool that can reorient and standardize the positioning of the MRI scan."
+        },
+        {
+            "prompt": "normalize MRI and CBCT resolution",
+            "expected_tool": "mri2cbct_resample",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, mri2cbct_resample, pre_aso_cbct, areg_cbct, mri2cbct_lr_crop, semi_aso_cbct, autocrop3d, mri2cbct_orient_center, mri2cbct_tmj_crop, batchdentalseg, clic, amasss_cli, ali_cbct, pre_aso_ios ✅",
+            "llm_prediction": "mri2cbct_resample ✅",
+            "Confidence": 0.9,
+            "Latency": 2.2389,
+            "reasoning": "The user wants to normalize the resolution of both MRI and CBCT scans, which suggests a preprocessing task. Among the filtered tools, mri2cbct_resample stands out as it resamples MRI and CBCT to uniform spacing, which aligns with the request."
+        },
+        {
+            "prompt": "segment jaw joint area",
+            "expected_tool": "mri2cbct_tmj_crop",
+            "rag_prediction": "mri2cbct_tmj_crop, mri2cbct_lr_crop, semi_aso_ios, autocrop3d, pre_aso_ios, batchdentalseg, docshapeaxi, amasss_cli, semi_aso_cbct, pre_aso_cbct, areg_ios, flexreg, ali_cbct, ali_ios, clic ✅",
+            "llm_prediction": "mri2cbct_tmj_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.1617,
+            "reasoning": "The user is asking to segment the jaw joint area, which suggests a focus on temporomandibular joint (TMJ) analysis. Given this specific request, I will prioritize tools that can automatically segment and extract TMJ regions from medical images."
+        },
+        {
+            "prompt": "prepare CBCT for automated analysis",
+            "expected_tool": "pre_aso_cbct",
+            "rag_prediction": "pre_aso_cbct, semi_aso_cbct, areg_cbct, ali_cbct, batchdentalseg, clic, autocrop3d, mri2cbct_approx, mri2cbct_reg, automatrix, amasss_cli, pre_aso_ios, mri2cbct_resample, semi_aso_ios, docshapeaxi ✅",
+            "llm_prediction": "pre_aso_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3992,
+            "reasoning": "The user wants to prepare a CBCT scan for automated analysis, which likely involves preprocessing and standardization steps."
+        },
+        {
+            "prompt": "process intraoral scan for orientation",
+            "expected_tool": "pre_aso_ios",
+            "rag_prediction": "pre_aso_ios, semi_aso_ios, ali_ios, semi_aso_cbct, areg_ios, pre_aso_cbct, mri2cbct_orient_center, ali_cbct, flexreg, batchdentalseg, docshapeaxi, amasss_cli, areg_cbct, mri2cbct_tmj_crop, autocrop3d ✅",
+            "llm_prediction": "pre_aso_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0999,
+            "reasoning": "The user is asking to process an intraoral (IOS) scan for orientation, which suggests they want to standardize and preprocess the dental surface mesh for subsequent analysis or segmentation. Based on this requirement, I recommend using the 'pre_aso_ios' tool."
+        },
+        {
+            "prompt": "find CBCT orientation with landmarks",
+            "expected_tool": "semi_aso_cbct",
+            "rag_prediction": "semi_aso_cbct, ali_cbct, pre_aso_cbct, semi_aso_ios, areg_cbct, mri2cbct_orient_center, mri2cbct_approx, mri2cbct_reg, autocrop3d, ali_ios, clic, pre_aso_ios, mri2cbct_lr_crop, amasss_cli, automatrix ✅",
+            "llm_prediction": "semi_aso_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3456,
+            "reasoning": "The user is looking for a tool that can help find the orientation of CBCT scans using landmarks."
+        },
+        {
+            "prompt": "orient scan using anatomical points",
+            "expected_tool": "semi_aso_ios",
+            "rag_prediction": "mri2cbct_orient_center, semi_aso_cbct, semi_aso_ios, pre_aso_cbct, pre_aso_ios, ali_cbct, ali_ios, mri2cbct_approx, areg_ios, areg_cbct, mri2cbct_reg, mri2cbct_tmj_crop, amasss_cli, mri2cbct_lr_crop, autocrop3d ✅",
+            "llm_prediction": "semi_aso_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 1.5634,
+            "reasoning": "The user wants to orient a CBCT or IOS scan using anatomical points, which suggests they are looking for semi-automatic or automatic segmentation and orientation tools."
+        },
+        {
+            "prompt": "where are the landmarks on this CBCT",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, ali_ios, areg_cbct, pre_aso_cbct, semi_aso_ios, autocrop3d, mri2cbct_approx, amasss_cli, clic, mri2cbct_reg, mri2cbct_lr_crop, mri2cbct_orient_center, batchdentalseg, areg_ios ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.1246,
+            "reasoning": "The user is asking about the location of landmarks on a CBCT scan."
+        },
+        {
+            "prompt": "how do i find anatomical points on scan",
+            "expected_tool": "ali_ios",
+            "rag_prediction": "ali_cbct, ali_ios, semi_aso_cbct, mri2cbct_orient_center, semi_aso_ios, pre_aso_cbct, amasss_cli, mri2cbct_approx, areg_ios, pre_aso_ios, mri2cbct_resample, autocrop3d, mri2cbct_lr_crop, mri2cbct_tmj_crop, areg_cbct ✅",
+            "llm_prediction": "ali_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 1.7133,
+            "reasoning": "The user wants to find anatomical points on a scan, which suggests they are looking for landmark detection or segmentation. Given the options, I will prioritize tools that can detect and identify anatomical landmarks."
+        },
+        {
+            "prompt": "can you segment my teeth structure",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "batchdentalseg, pre_aso_ios, semi_aso_ios, amasss_cli, clic, docshapeaxi, semi_aso_cbct, ali_ios, areg_ios, flexreg, mri2cbct_tmj_crop, autocrop3d, mri2cbct_lr_crop, pre_aso_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "amasss_cli ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0733,
+            "reasoning": "The user is asking to segment their teeth structure, which suggests they want to automatically identify and separate individual teeth from a CBCT scan or other dental imaging modality. Based on this request, I will prioritize tools that can perform instance segmentation of dental structures."
+        },
+        {
+            "prompt": "i need to register my CBCT images",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "mri2cbct_reg, areg_cbct, pre_aso_cbct, mri2cbct_approx, semi_aso_cbct, areg_ios, ali_cbct, batchdentalseg, automatrix, clic, autocrop3d, mri2cbct_lr_crop, mri2cbct_resample, flexreg, amasss_cli ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4267,
+            "reasoning": "The user needs to register their CBCT images, which suggests a registration task for cone-beam CT scans."
+        },
+        {
+            "prompt": "how to align intraoral scans",
+            "expected_tool": "areg_ios",
+            "rag_prediction": "pre_aso_ios, areg_ios, ali_ios, semi_aso_ios, semi_aso_cbct, mri2cbct_orient_center, pre_aso_cbct, ali_cbct, mri2cbct_approx, mri2cbct_lr_crop, areg_cbct, flexreg, docshapeaxi, amasss_cli, batchdentalseg ✅",
+            "llm_prediction": "areg_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.8003,
+            "reasoning": "The user wants to align intraoral scans, which suggests they are looking for a registration tool that can handle IOS surfaces. Based on this information, I will select the most relevant tool from the filtered list."
+        },
+        {
+            "prompt": "extract region of interest",
+            "expected_tool": "autocrop3d",
+            "rag_prediction": "autocrop3d, mri2cbct_tmj_crop, mri2cbct_lr_crop, semi_aso_ios, semi_aso_cbct, ali_cbct, ali_ios, pre_aso_cbct, mri2cbct_orient_center, pre_aso_ios, clic, batchdentalseg, amasss_cli, docshapeaxi, mri2cbct_approx ✅",
+            "llm_prediction": "autocrop3d ✅",
+            "Confidence": 0.9,
+            "Latency": 2.2858,
+            "reasoning": "The user wants to extract a region of interest from 3D volumetric medical images (CT, MRI, CBCT). This task requires automatic cropping and extraction of specific regions from the volume. Based on this requirement, I recommend using the `autocrop3d` tool."
+        },
+        {
+            "prompt": "transform scan coordinates",
+            "expected_tool": "automatrix",
+            "rag_prediction": "pre_aso_cbct, mri2cbct_orient_center, automatrix, mri2cbct_resample, pre_aso_ios, semi_aso_cbct, mri2cbct_approx, areg_cbct, areg_ios, semi_aso_ios, ali_ios, flexreg, autocrop3d, mri2cbct_reg, docshapeaxi ✅",
+            "llm_prediction": "areg_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 2.6228,
+            "reasoning": "The user is asking to transform scan coordinates, which suggests a registration or alignment task. Given that the request involves CBCT scans, I will prioritize tools designed for CBCT-to-CBCT registration. Among the filtered tools, I find 'areg_cbct: Automatic Registration of CBCT images for longitudinal studies' as the most relevant tool for this task."
+        },
+        {
+            "prompt": "process many scans at one time",
+            "expected_tool": "batchdentalseg",
+            "rag_prediction": "pre_aso_cbct, batchdentalseg, mri2cbct_resample, pre_aso_ios, mri2cbct_orient_center, mri2cbct_approx, semi_aso_cbct, areg_cbct, mri2cbct_tmj_crop, areg_ios, automatrix, mri2cbct_reg, clic, autocrop3d, medx_summarize ✅",
+            "llm_prediction": "batchdentalseg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4067,
+            "reasoning": "The user wants to process multiple scans at once, which suggests they are looking for a batch processing solution."
+        },
+        {
+            "prompt": "segment cbct with deep learning",
+            "expected_tool": "clic",
+            "rag_prediction": "batchdentalseg, clic, amasss_cli, pre_aso_cbct, areg_cbct, semi_aso_cbct, mri2cbct_reg, mri2cbct_approx, autocrop3d, ali_cbct, mri2cbct_tmj_crop, mri2cbct_resample, mri2cbct_lr_crop, automatrix, semi_aso_ios ✅",
+            "llm_prediction": "amasss_cli ❌",
+            "Confidence": 0.9,
+            "Latency": 2.5207,
+            "reasoning": "The user is asking to segment CBCT scans using deep learning, which suggests they are looking for a tool that can perform instance segmentation of dental and anatomical structures from CBCT scans. Given the request for deep learning-based segmentation, I will prioritize tools that utilize pre-trained nnUNet models or Mask R-CNN algorithms."
+        },
+        {
+            "prompt": "measure tooth shape differences",
+            "expected_tool": "docshapeaxi",
+            "rag_prediction": "docshapeaxi, ali_ios, pre_aso_ios, areg_ios, batchdentalseg, semi_aso_ios, flexreg, mri2cbct_lr_crop, ali_cbct, clic, amasss_cli, semi_aso_cbct, autocrop3d, areg_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "docshapeaxi ✅",
+            "Confidence": 0.9,
+            "Latency": 2.1813,
+            "reasoning": "The user is asking to measure tooth shape differences, which suggests a need for statistical shape analysis and classification of 3D dental meshes. This requirement matches the functionality of 'docshapeaxi', which uses ShapeAXI for morphometric feature extraction and GradCAM visualization for interpretability."
+        },
+        {
+            "prompt": "match dental surfaces together",
+            "expected_tool": "flexreg",
+            "rag_prediction": "flexreg, areg_ios, pre_aso_ios, docshapeaxi, semi_aso_ios, batchdentalseg, ali_ios, mri2cbct_approx, semi_aso_cbct, clic, ali_cbct, automatrix, areg_cbct, mri2cbct_reg, mri2cbct_lr_crop ✅",
+            "llm_prediction": "areg_ios ❌",
+            "Confidence": 0.9,
+            "Latency": 1.7932,
+            "reasoning": "The user is asking to match dental surfaces together, which suggests a registration task. Since the request involves dental surfaces, I will focus on tools that operate on 3D surface meshes or intraoral scans (IOS)."
+        },
+        {
+            "prompt": "show data in dashboard",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, medx_summarize, areg_ios, docshapeaxi, ali_ios, flexreg, semi_aso_ios, autocrop3d, pre_aso_ios, automatrix, mri2cbct_tmj_crop, amasss_cli, ali_cbct, batchdentalseg, clic ✅",
+            "llm_prediction": "medx_dashboard ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4726,
+            "reasoning": "The user wants to show medical and dental imaging data in a dashboard, which suggests they are looking for an interactive visualization of their data and analysis summaries."
+        },
+        {
+            "prompt": "make summary of medical text",
+            "expected_tool": "medx_summarize",
+            "rag_prediction": "medx_summarize, medx_dashboard, mri2cbct_approx, batchdentalseg, mri2cbct_tmj_crop, automatrix, pre_aso_cbct, mri2cbct_reg, autocrop3d, mri2cbct_lr_crop, docshapeaxi, areg_cbct, mri2cbct_resample, mri2cbct_orient_center, semi_aso_cbct ✅",
+            "llm_prediction": "medx_summarize ✅",
+            "Confidence": 0.9,
+            "Latency": 1.1322,
+            "reasoning": "The user is asking for a summary of medical text."
+        },
+        {
+            "prompt": "convert MRI to CBCT format",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, mri2cbct_resample, pre_aso_cbct, areg_cbct, mri2cbct_orient_center, semi_aso_cbct, mri2cbct_lr_crop, mri2cbct_tmj_crop, autocrop3d, amasss_cli, batchdentalseg, clic, automatrix, ali_cbct ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4289,
+            "reasoning": "The user wants to convert MRI scans into CBCT format, which requires preprocessing and registration steps."
+        },
+        {
+            "prompt": "overlay MRI on CBCT",
+            "expected_tool": "mri2cbct_reg",
+            "rag_prediction": "mri2cbct_reg, mri2cbct_approx, areg_cbct, mri2cbct_resample, pre_aso_cbct, semi_aso_cbct, autocrop3d, mri2cbct_lr_crop, mri2cbct_tmj_crop, clic, mri2cbct_orient_center, amasss_cli, batchdentalseg, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_reg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3426,
+            "reasoning": "The user wants to overlay MRI on CBCT, which suggests a multimodal registration task."
+        },
+        {
+            "prompt": "analyze asymmetry between sides",
+            "expected_tool": "mri2cbct_lr_crop",
+            "rag_prediction": "mri2cbct_lr_crop, docshapeaxi, mri2cbct_orient_center, semi_aso_cbct, pre_aso_cbct, pre_aso_ios, semi_aso_ios, mri2cbct_tmj_crop, ali_ios, autocrop3d, ali_cbct, areg_ios, areg_cbct, automatrix, clic ✅",
+            "llm_prediction": "mri2cbct_lr_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0891,
+            "reasoning": "The user is asking to analyze asymmetry between sides, which suggests a comparison of left and right hemimandibular or hemimaxillary regions from registered MRI-CBCT pairs. This task requires cropping the volumes for left-right asymmetry analysis."
+        },
+        {
+            "prompt": "put MRI in standard orientation",
+            "expected_tool": "mri2cbct_orient_center",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, mri2cbct_reg, semi_aso_cbct, mri2cbct_approx, mri2cbct_resample, semi_aso_ios, pre_aso_ios, mri2cbct_lr_crop, mri2cbct_tmj_crop, areg_cbct, automatrix, areg_ios, autocrop3d, ali_ios ✅",
+            "llm_prediction": "mri2cbct_orient_center ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4621,
+            "reasoning": "The user wants to put MRI scans in a standard orientation, which is a common preprocessing step for many medical imaging analysis tasks."
+        },
+        {
+            "prompt": "make MRI and CBCT same resolution",
+            "expected_tool": "mri2cbct_resample",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, mri2cbct_resample, pre_aso_cbct, areg_cbct, mri2cbct_lr_crop, semi_aso_cbct, autocrop3d, mri2cbct_orient_center, mri2cbct_tmj_crop, batchdentalseg, clic, amasss_cli, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_resample ✅",
+            "Confidence": 0.9,
+            "Latency": 1.5251,
+            "reasoning": "The user wants to make MRI and CBCT scans have the same resolution, which is a preprocessing step for multimodal registration and fusion."
+        },
+        {
+            "prompt": "find jaw joint on scan",
+            "expected_tool": "mri2cbct_tmj_crop",
+            "rag_prediction": "mri2cbct_tmj_crop, mri2cbct_lr_crop, semi_aso_cbct, ali_cbct, semi_aso_ios, ali_ios, pre_aso_cbct, amasss_cli, areg_ios, pre_aso_ios, batchdentalseg, mri2cbct_reg, areg_cbct, docshapeaxi, autocrop3d ✅",
+            "llm_prediction": "mri2cbct_tmj_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.2616,
+            "reasoning": "The user is looking for a tool to find the jaw joint (TMJ) on a scan, which suggests they want to segment and crop the TMJ region from an MRI or CBCT volume. Given this requirement, I will select the most relevant tool based on the filtered list."
+        },
+        {
+            "prompt": "get CBCT ready for segmentation",
+            "expected_tool": "pre_aso_cbct",
+            "rag_prediction": "pre_aso_cbct, clic, semi_aso_cbct, batchdentalseg, areg_cbct, amasss_cli, mri2cbct_approx, autocrop3d, mri2cbct_reg, ali_cbct, mri2cbct_resample, mri2cbct_tmj_crop, mri2cbct_lr_crop, pre_aso_ios, semi_aso_ios ✅",
+            "llm_prediction": "pre_aso_cbct ✅",
+            "Confidence": 1.0,
+            "Latency": 2.3778,
+            "reasoning": "The user wants to get their CBCT scan ready for segmentation, which involves preprocessing and standardizing the image. Based on this requirement, I recommend using 'pre_aso_cbct' as it preprocesses CBCT scans with standardized resampling, orientation correction, and field-of-view adjustment for subsequent automated segmentation pipelines."
+        },
+        {
+            "prompt": "fix scan orientation automatically",
+            "expected_tool": "pre_aso_ios",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, semi_aso_cbct, pre_aso_ios, semi_aso_ios, automatrix, ali_ios, areg_ios, areg_cbct, ali_cbct, flexreg, mri2cbct_resample, mri2cbct_tmj_crop, autocrop3d, mri2cbct_approx ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.9,
+            "Latency": 2.03,
+            "reasoning": "The user wants to fix scan orientation automatically, which suggests they are working with MRI scans. The most relevant tool for this task is `mri2cbct_orient_center` as it orients and centers MRI scans for standardized positioning."
+        },
+        {
+            "prompt": "use landmarks to orient CBCT",
+            "expected_tool": "semi_aso_cbct",
+            "rag_prediction": "semi_aso_cbct, ali_cbct, semi_aso_ios, pre_aso_cbct, mri2cbct_orient_center, areg_cbct, autocrop3d, ali_ios, mri2cbct_approx, pre_aso_ios, clic, mri2cbct_reg, automatrix, amasss_cli, mri2cbct_lr_crop ✅",
+            "llm_prediction": "semi_aso_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.6466,
+            "reasoning": "The user wants to use landmarks to orient CBCT scans, which suggests they are looking for a semi-automatic or automatic segmentation orientation tool that utilizes anatomical landmarks."
+        },
+        {
+            "prompt": "set scan in proper position",
+            "expected_tool": "semi_aso_ios",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, semi_aso_cbct, mri2cbct_resample, pre_aso_ios, semi_aso_ios, areg_ios, ali_ios, areg_cbct, automatrix, mri2cbct_approx, autocrop3d, ali_cbct, flexreg, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.9,
+            "Latency": 1.6835,
+            "reasoning": "The user wants to set a CBCT scan in a proper position, which suggests that they need to orient and center the scan for standardized analysis and comparison across subjects."
+        },
+        {
+            "prompt": "i wanna find points on my CBCT",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, areg_cbct, pre_aso_cbct, autocrop3d, clic, semi_aso_ios, mri2cbct_reg, mri2cbct_approx, ali_ios, amasss_cli, batchdentalseg, areg_ios, mri2cbct_resample, mri2cbct_lr_crop ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.206,
+            "reasoning": "The user wants to identify specific points or landmarks on their CBCT scan."
+        },
+        {
+            "prompt": "detect anatomical features automatically",
+            "expected_tool": "ali_ios",
+            "rag_prediction": "ali_cbct, amasss_cli, semi_aso_cbct, semi_aso_ios, ali_ios, mri2cbct_tmj_crop, batchdentalseg, docshapeaxi, pre_aso_cbct, autocrop3d, pre_aso_ios, mri2cbct_orient_center, mri2cbct_approx, areg_cbct, mri2cbct_lr_crop ✅",
+            "llm_prediction": "ali_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 1.5269,
+            "reasoning": "The user wants to detect anatomical features automatically, which suggests they are looking for a tool that can identify specific structures or landmarks on medical images."
+        },
+        {
+            "prompt": "split teeth from other stuff",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "batchdentalseg, clic, pre_aso_ios, mri2cbct_tmj_crop, docshapeaxi, mri2cbct_lr_crop, amasss_cli, autocrop3d, flexreg, semi_aso_ios, areg_ios, semi_aso_cbct, ali_ios, mri2cbct_approx, areg_cbct ✅",
+            "llm_prediction": "amasss_cli ✅",
+            "Confidence": 0.9,
+            "Latency": 2.4051,
+            "reasoning": "The user wants to split teeth from other dental structures, which suggests instance segmentation of specific teeth. This is a key feature of amasss_cli, which uses nnUNet-based models for automatic segmentation of maxilla, mandible, and other anatomical structures. Therefore, I recommend using amasss_cli for this task."
+        },
+        {
+            "prompt": "put two CBCT images together",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, areg_cbct, pre_aso_cbct, semi_aso_cbct, mri2cbct_resample, clic, mri2cbct_lr_crop, autocrop3d, batchdentalseg, mri2cbct_tmj_crop, ali_cbct, amasss_cli, automatrix, mri2cbct_orient_center ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 2.5484,
+            "reasoning": "The user wants to combine two CBCT scans, which suggests they are looking for image registration or fusion. Given that both images are CBCT scans, I will prioritize tools that handle CBCT-to-CBCT registration. Among the filtered options, areg_cbct stands out as it specifically handles automatic registration of CBCT images for longitudinal studies."
+        },
+        {
+            "prompt": "match dental impressions",
+            "expected_tool": "areg_ios",
+            "rag_prediction": "areg_ios, flexreg, ali_ios, batchdentalseg, pre_aso_ios, semi_aso_ios, docshapeaxi, mri2cbct_approx, ali_cbct, clic, semi_aso_cbct, mri2cbct_lr_crop, areg_cbct, amasss_cli, mri2cbct_reg ✅",
+            "llm_prediction": "areg_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.6913,
+            "reasoning": "The user is looking to match dental impressions, which suggests a registration task for intraoral scans (IOS). Given this context, I will prioritize tools that handle IOS registration and surface alignment."
+        },
+        {
+            "prompt": "cut out interesting part",
+            "expected_tool": "autocrop3d",
+            "rag_prediction": "mri2cbct_tmj_crop, mri2cbct_lr_crop, autocrop3d, pre_aso_cbct, pre_aso_ios, mri2cbct_approx, medx_summarize, semi_aso_ios, batchdentalseg, clic, semi_aso_cbct, amasss_cli, mri2cbct_resample, docshapeaxi, mri2cbct_orient_center ✅",
+            "llm_prediction": "mri2cbct_lr_crop ❌",
+            "Confidence": 0.0,
+            "Latency": 0.9104,
+            "reasoning": ""
+        },
+        {
+            "prompt": "move scan around",
+            "expected_tool": "automatrix",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, mri2cbct_resample, semi_aso_cbct, pre_aso_ios, areg_cbct, areg_ios, automatrix, mri2cbct_approx, semi_aso_ios, autocrop3d, mri2cbct_tmj_crop, flexreg, mri2cbct_reg, ali_ios ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.8,
+            "Latency": 1.7728,
+            "reasoning": "The user wants to move a scan around, which suggests they want to reorient or center their medical image. This is typically done for standardized positioning and analysis across subjects."
+        },
+        {
+            "prompt": "segment lot of dental scans",
+            "expected_tool": "batchdentalseg",
+            "rag_prediction": "batchdentalseg, pre_aso_ios, areg_ios, semi_aso_cbct, amasss_cli, semi_aso_ios, pre_aso_cbct, clic, docshapeaxi, areg_cbct, ali_ios, mri2cbct_approx, mri2cbct_tmj_crop, autocrop3d, flexreg ✅",
+            "llm_prediction": "batchdentalseg ✅",
+            "Confidence": 0.9,
+            "Latency": 2.5666,
+            "reasoning": "The user is asking to segment a large number of dental scans, which suggests batch processing support. Given this requirement, I will prioritize tools that can handle batch segmentation. Among the filtered list, batchdentalseg stands out as it provides automated segmentation of dental structures from CBCT scans using pre-trained nnUNet deep learning models with batch processing support."
+        },
+        {
+            "prompt": "use AI to segment CBCT",
+            "expected_tool": "clic",
+            "rag_prediction": "clic, batchdentalseg, amasss_cli, ali_cbct, semi_aso_cbct, pre_aso_cbct, areg_cbct, autocrop3d, mri2cbct_approx, mri2cbct_reg, mri2cbct_tmj_crop, semi_aso_ios, docshapeaxi, pre_aso_ios, automatrix ✅",
+            "llm_prediction": "amasss_cli ❌",
+            "Confidence": 0.9,
+            "Latency": 1.364,
+            "reasoning": "The user wants to use AI to segment CBCT scans, which suggests they are looking for a deep learning-based solution."
+        },
+        {
+            "prompt": "check shape of tooth surface",
+            "expected_tool": "docshapeaxi",
+            "rag_prediction": "docshapeaxi, ali_ios, pre_aso_ios, flexreg, areg_ios, semi_aso_ios, batchdentalseg, clic, semi_aso_cbct, ali_cbct, amasss_cli, autocrop3d, mri2cbct_lr_crop, pre_aso_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "docshapeaxi ✅",
+            "Confidence": 0.9,
+            "Latency": 3.0193,
+            "reasoning": "The user is asking to check the shape of a tooth surface, which suggests they are interested in analyzing dental surfaces. Given this context, I will focus on tools that can perform shape analysis or statistical shape analysis. Among the filtered tools, docshapeaxi stands out as it specifically mentions 'Shape Analysis' and 'Statistical Shape Analysis' for 3D dental meshes. Therefore, I recommend using docshapeaxi to analyze the shape of the tooth surface."
+        },
+        {
+            "prompt": "make dental surfaces match",
+            "expected_tool": "flexreg",
+            "rag_prediction": "flexreg, areg_ios, docshapeaxi, pre_aso_ios, ali_ios, semi_aso_ios, batchdentalseg, mri2cbct_approx, automatrix, ali_cbct, clic, semi_aso_cbct, areg_cbct, mri2cbct_lr_crop, mri2cbct_reg ✅",
+            "llm_prediction": "flexreg ✅",
+            "Confidence": 0.9,
+            "Latency": 2.2158,
+            "reasoning": "The user is asking to match dental surfaces, which suggests a registration or alignment task. Since the request involves dental surfaces, I will focus on tools that operate on these types of data. The most relevant tool for this task is likely 'flexreg' as it specifically handles flexible patch-based registration for dental surfaces."
+        },
+        {
+            "prompt": "make picture of my data",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, mri2cbct_resample, mri2cbct_tmj_crop, areg_ios, autocrop3d, medx_summarize, automatrix, mri2cbct_lr_crop, batchdentalseg, docshapeaxi, pre_aso_ios, mri2cbct_approx, mri2cbct_orient_center, ali_ios, mri2cbct_reg ✅",
+            "llm_prediction": "batchdentalseg ❌",
+            "Confidence": 0.8,
+            "Latency": 1.3854,
+            "reasoning": "The user is asking for a medical imaging tool that can help with dental analysis, specifically related to CBCT scans."
+        },
+        {
+            "prompt": "write summary automatically",
+            "expected_tool": "medx_summarize",
+            "rag_prediction": "medx_summarize, medx_dashboard, batchdentalseg, automatrix, semi_aso_cbct, semi_aso_ios, pre_aso_ios, autocrop3d, areg_cbct, pre_aso_cbct, mri2cbct_tmj_crop, areg_ios, ali_cbct, ali_ios, mri2cbct_orient_center ✅",
+            "llm_prediction": "medx_summarize ✅",
+            "Confidence": 0.8,
+            "Latency": 1.6619,
+            "reasoning": "The user is requesting a medical imaging tool for summarizing patient notes, generating concise clinical summaries from PDF, DOCX, and TXT files using transformer-based NLP models."
+        },
+        {
+            "prompt": "turn MRI into CBCT",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, pre_aso_cbct, mri2cbct_resample, areg_cbct, semi_aso_cbct, autocrop3d, mri2cbct_lr_crop, mri2cbct_tmj_crop, batchdentalseg, amasss_cli, clic, mri2cbct_orient_center, automatrix, ali_cbct ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.6266,
+            "reasoning": "The user wants to convert an MRI scan into a CBCT (Cone Beam Computed Tomography) scan, which requires registration and preprocessing steps."
+        },
+        {
+            "prompt": "put MRI and CBCT together",
+            "expected_tool": "mri2cbct_reg",
+            "rag_prediction": "mri2cbct_reg, mri2cbct_approx, mri2cbct_resample, areg_cbct, pre_aso_cbct, mri2cbct_lr_crop, semi_aso_cbct, mri2cbct_tmj_crop, autocrop3d, mri2cbct_orient_center, batchdentalseg, amasss_cli, clic, ali_cbct, areg_ios ✅",
+            "llm_prediction": "mri2cbct_reg ✅",
+            "Confidence": 0.8,
+            "Latency": 1.5268,
+            "reasoning": "The user is asking for a tool that combines MRI and CBCT, so I will prioritize tools that register or preprocess both modalities."
+        },
+        {
+            "prompt": "see difference left and right",
+            "expected_tool": "mri2cbct_lr_crop",
+            "rag_prediction": "mri2cbct_lr_crop, mri2cbct_tmj_crop, mri2cbct_orient_center, semi_aso_cbct, semi_aso_ios, pre_aso_cbct, pre_aso_ios, autocrop3d, ali_ios, areg_ios, areg_cbct, ali_cbct, flexreg, docshapeaxi, mri2cbct_resample ✅",
+            "llm_prediction": "mri2cbct_lr_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4724,
+            "reasoning": "The user is looking for a tool that can help them see the difference between the left and right sides of an image."
+        },
+        {
+            "prompt": "fix MRI position",
+            "expected_tool": "mri2cbct_orient_center",
+            "rag_prediction": "mri2cbct_orient_center, mri2cbct_resample, mri2cbct_approx, pre_aso_cbct, mri2cbct_lr_crop, mri2cbct_reg, mri2cbct_tmj_crop, semi_aso_cbct, semi_aso_ios, autocrop3d, areg_cbct, pre_aso_ios, areg_ios, ali_cbct, ali_ios ✅",
+            "llm_prediction": "mri2cbct_orient_center ✅",
+            "Confidence": 0.9,
+            "Latency": 1.423,
+            "reasoning": "The user wants to fix the MRI position, which suggests they want to orient and center the MRI scans for standardized positioning."
+        },
+        {
+            "prompt": "make same size for both",
+            "expected_tool": "mri2cbct_resample",
+            "rag_prediction": "mri2cbct_lr_crop, mri2cbct_approx, mri2cbct_resample, mri2cbct_tmj_crop, mri2cbct_orient_center, mri2cbct_reg, flexreg, areg_ios, pre_aso_cbct, areg_cbct, autocrop3d, pre_aso_ios, automatrix, semi_aso_cbct, semi_aso_ios ✅",
+            "llm_prediction": "mri2cbct_lr_crop ❌",
+            "Confidence": 1.0,
+            "Latency": 2.3688,
+            "reasoning": "The user is asking to crop MRI and CBCT volumes for left-right asymmetry analysis, which matches the functionality of `mri2cbct_lr_crop`. This tool extracts left and right hemimandibular or hemimaxillary regions from registered MRI-CBCT pairs for bilateral morphometric comparison and asymmetry assessment."
+        },
+        {
+            "prompt": "find jaw bone area",
+            "expected_tool": "mri2cbct_tmj_crop",
+            "rag_prediction": "amasss_cli, autocrop3d, mri2cbct_tmj_crop, mri2cbct_lr_crop, ali_cbct, semi_aso_ios, batchdentalseg, pre_aso_ios, docshapeaxi, ali_ios, semi_aso_cbct, areg_ios, pre_aso_cbct, areg_cbct, flexreg ✅",
+            "llm_prediction": "amasss_cli ❌",
+            "Confidence": 0.8,
+            "Latency": 1.9743,
+            "reasoning": "The user is looking for a tool to find the jaw bone area, which suggests they are interested in dental or maxillofacial imaging. Given this context, I will focus on tools that work with CBCT scans and have features related to jaw bone segmentation."
+        },
+        {
+            "prompt": "make CBCT ready to use",
+            "expected_tool": "pre_aso_cbct",
+            "rag_prediction": "pre_aso_cbct, semi_aso_cbct, areg_cbct, mri2cbct_approx, mri2cbct_reg, clic, autocrop3d, batchdentalseg, ali_cbct, mri2cbct_resample, automatrix, amasss_cli, mri2cbct_lr_crop, pre_aso_ios, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "pre_aso_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3873,
+            "reasoning": "The user wants to make their CBCT scans ready for use, which likely involves preprocessing and standardization steps."
+        },
+        {
+            "prompt": "straighten the scan",
+            "expected_tool": "pre_aso_ios",
+            "rag_prediction": "pre_aso_cbct, mri2cbct_orient_center, semi_aso_cbct, pre_aso_ios, mri2cbct_resample, mri2cbct_approx, areg_cbct, mri2cbct_lr_crop, semi_aso_ios, mri2cbct_reg, autocrop3d, automatrix, mri2cbct_tmj_crop, areg_ios, docshapeaxi ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.9,
+            "Latency": 1.5548,
+            "reasoning": "The user wants to straighten a CBCT or MRI scan, which suggests they want to orient and standardize the image for further analysis or processing."
+        },
+        {
+            "prompt": "mark points on CBCT",
+            "expected_tool": "semi_aso_cbct",
+            "rag_prediction": "semi_aso_cbct, ali_cbct, areg_cbct, autocrop3d, pre_aso_cbct, clic, mri2cbct_reg, semi_aso_ios, mri2cbct_approx, batchdentalseg, areg_ios, ali_ios, mri2cbct_lr_crop, mri2cbct_resample, amasss_cli ✅",
+            "llm_prediction": "semi_aso_cbct ✅",
+            "Confidence": 0.8,
+            "Latency": 1.4612,
+            "reasoning": "The user wants to mark points on a CBCT scan, which suggests they need a tool for semi-automatic segmentation orientation using landmarks."
+        },
+        {
+            "prompt": "rotate scan correctly",
+            "expected_tool": "semi_aso_ios",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, semi_aso_cbct, pre_aso_ios, automatrix, semi_aso_ios, mri2cbct_resample, areg_cbct, areg_ios, mri2cbct_approx, mri2cbct_reg, flexreg, autocrop3d, mri2cbct_lr_crop, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.9,
+            "Latency": 1.5125,
+            "reasoning": "The user wants to rotate a scan correctly, which suggests they are looking for a tool that can orient and center their MRI scans for standardized positioning."
+        },
+        {
+            "prompt": "whatr are key points on CBCT",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, areg_cbct, pre_aso_cbct, clic, autocrop3d, mri2cbct_approx, amasss_cli, mri2cbct_reg, batchdentalseg, mri2cbct_lr_crop, ali_ios, semi_aso_ios, mri2cbct_resample, docshapeaxi ✅",
+            "llm_prediction": "amasss_cli ❌",
+            "Confidence": 0.9,
+            "Latency": 1.4357,
+            "reasoning": "The user is asking about CBCT, so I will focus on tools that specifically work with Cone-Beam Computed Tomography scans."
+        },
+        {
+            "prompt": "locate features in mouth scan",
+            "expected_tool": "ali_ios",
+            "rag_prediction": "ali_ios, batchdentalseg, ali_cbct, amasss_cli, pre_aso_ios, docshapeaxi, semi_aso_ios, areg_ios, semi_aso_cbct, clic, pre_aso_cbct, mri2cbct_lr_crop, mri2cbct_tmj_crop, autocrop3d, areg_cbct ✅",
+            "llm_prediction": "ali_ios ✅",
+            "Confidence": 0.8,
+            "Latency": 2.1097,
+            "reasoning": "The user is looking to locate features in a mouth scan, which suggests they are interested in dental imaging and analysis. Given this context, I will focus on tools that can detect landmarks or perform segmentation on 3D surface meshes from intraoral scanners (IOS) or CBCT scans."
+        },
+        {
+            "prompt": "isolate tooth structures",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "pre_aso_ios, batchdentalseg, semi_aso_ios, docshapeaxi, amasss_cli, clic, ali_ios, semi_aso_cbct, areg_ios, flexreg, autocrop3d, pre_aso_cbct, ali_cbct, mri2cbct_tmj_crop, mri2cbct_lr_crop ✅",
+            "llm_prediction": "batchdentalseg ❌",
+            "Confidence": 0.8,
+            "Latency": 1.5679,
+            "reasoning": "The user wants to isolate tooth structures, which suggests a need for segmentation and possibly orientation of dental surfaces. Given this requirement, I will analyze the filtered tools."
+        },
+        {
+            "prompt": "match two CBCT scans",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "areg_cbct, mri2cbct_approx, mri2cbct_reg, semi_aso_cbct, pre_aso_cbct, ali_cbct, mri2cbct_resample, batchdentalseg, clic, mri2cbct_lr_crop, areg_ios, amasss_cli, autocrop3d, mri2cbct_tmj_crop, mri2cbct_orient_center ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 3.2715,
+            "reasoning": "The user wants to match two CBCT scans, which suggests they are looking for a registration tool. Among the filtered tools, I found 'areg_cbct' and 'semi_aso_cbct' that can perform automatic registration of CBCT images. However, since the request is specifically about matching two CBCT scans, I will prioritize 'areg_cbct' as it is designed for registering baseline and follow-up CBCT scans using deformable or rigid registration to track anatomical changes over time."
+        },
+        {
+            "prompt": "superimpose dental surfaces",
+            "expected_tool": "areg_ios",
+            "rag_prediction": "flexreg, pre_aso_ios, semi_aso_ios, docshapeaxi, areg_ios, batchdentalseg, clic, ali_ios, semi_aso_cbct, amasss_cli, mri2cbct_approx, autocrop3d, automatrix, areg_cbct, ali_cbct ✅",
+            "llm_prediction": "flexreg ❌",
+            "Confidence": 0.9,
+            "Latency": 2.3443,
+            "reasoning": "The user is asking to superimpose dental surfaces, which suggests a registration task. Since it's specifically about dental surfaces, I'll focus on tools that work with 3D surface meshes or intraoral scans (IOS). The most relevant tool for this request is likely `flexreg` as it performs flexible patch-based registration for dental surfaces."
+        },
+        {
+            "prompt": "isolate area of concern",
+            "expected_tool": "autocrop3d",
+            "rag_prediction": "autocrop3d, mri2cbct_tmj_crop, pre_aso_ios, pre_aso_cbct, docshapeaxi, semi_aso_cbct, semi_aso_ios, mri2cbct_lr_crop, clic, ali_cbct, mri2cbct_resample, ali_ios, mri2cbct_orient_center, mri2cbct_approx, batchdentalseg ✅",
+            "llm_prediction": "none ❌",
+            "Confidence": 0.0,
+            "Latency": 0.7482,
+            "reasoning": ""
+        },
+        {
+            "prompt": "shift and rotate scan",
+            "expected_tool": "automatrix",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, semi_aso_cbct, mri2cbct_resample, pre_aso_ios, automatrix, areg_cbct, mri2cbct_tmj_crop, semi_aso_ios, areg_ios, mri2cbct_approx, flexreg, mri2cbct_lr_crop, mri2cbct_reg, autocrop3d ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.9,
+            "Latency": 1.4401,
+            "reasoning": "The user wants to shift and rotate a scan, which suggests they need to orient and center their MRI scans for standardized positioning."
+        },
+        {
+            "prompt": "handle multiple scans quickly",
+            "expected_tool": "batchdentalseg",
+            "rag_prediction": "mri2cbct_resample, batchdentalseg, pre_aso_cbct, mri2cbct_approx, areg_ios, mri2cbct_orient_center, areg_cbct, pre_aso_ios, mri2cbct_tmj_crop, mri2cbct_reg, semi_aso_cbct, automatrix, ali_ios, autocrop3d, clic ✅",
+            "llm_prediction": "batchdentalseg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.2289,
+            "reasoning": "The user wants to handle multiple scans quickly, which suggests batch processing support."
+        },
+        {
+            "prompt": "identify teeth in image",
+            "expected_tool": "clic",
+            "rag_prediction": "ali_ios, batchdentalseg, clic, pre_aso_ios, ali_cbct, semi_aso_ios, docshapeaxi, areg_ios, amasss_cli, semi_aso_cbct, flexreg, autocrop3d, mri2cbct_lr_crop, areg_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "amasss_cli ❌",
+            "Confidence": 0.9,
+            "Latency": 1.9503,
+            "reasoning": "The user wants to identify teeth in an image, which suggests they are looking for instance segmentation of dental structures. Given this requirement, I will prioritize tools that can perform instance segmentation on CBCT scans or intraoral scans (IOS)."
+        },
+        {
+            "prompt": "look at tooth geometry",
+            "expected_tool": "docshapeaxi",
+            "rag_prediction": "docshapeaxi, pre_aso_ios, ali_ios, semi_aso_ios, batchdentalseg, areg_ios, amasss_cli, clic, flexreg, ali_cbct, semi_aso_cbct, autocrop3d, mri2cbct_lr_crop, pre_aso_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "docshapeaxi ✅",
+            "Confidence": 0.9,
+            "Latency": 1.9424,
+            "reasoning": "The user wants to look at tooth geometry, which suggests they are interested in analyzing and understanding the shape and structure of teeth. Given this requirement, I will select a tool that can perform shape analysis and provide insights into dental morphology."
+        },
+        {
+            "prompt": "align surfaces precisely",
+            "expected_tool": "flexreg",
+            "rag_prediction": "flexreg, pre_aso_ios, semi_aso_ios, docshapeaxi, mri2cbct_orient_center, areg_ios, semi_aso_cbct, ali_ios, automatrix, pre_aso_cbct, autocrop3d, mri2cbct_approx, ali_cbct, mri2cbct_tmj_crop, mri2cbct_lr_crop ✅",
+            "llm_prediction": "flexreg ✅",
+            "Confidence": 0.8,
+            "Latency": 4.0877,
+            "reasoning": "The user is asking to align surfaces precisely, which suggests a registration task. Since the request does not specify the type of scans or surfaces, I will consider all possible options. The filtered tools include flexible patch-based registration for dental surfaces (flexreg), automatic registration of intraoral scans using iterative closest point (areg_ios), and semi-automatic segmentation orientation for CBCT using landmarks (semi_aso_cbct). Based on the request to align surfaces precisely, I will prioritize flexreg as it is specifically designed for precise alignment of 3D dental surface meshes. However, if the user's prompt indicates a specific type of scans or surfaces, I may need to reconsider and choose a different tool."
+        },
+        {
+            "prompt": "visualize the information",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, medx_summarize, docshapeaxi, ali_ios, mri2cbct_orient_center, pre_aso_ios, ali_cbct, semi_aso_ios, semi_aso_cbct, areg_ios, pre_aso_cbct, automatrix, autocrop3d, mri2cbct_tmj_crop, amasss_cli ✅",
+            "llm_prediction": "medx_summarize ❌",
+            "Confidence": 0.8,
+            "Latency": 1.9886,
+            "reasoning": "The user is asking for a tool that can help with medical and dental imaging, specifically CBCT, IOS, MRI. The request does not specify any specific task or feature, so we will analyze the available tools based on their tags."
+        },
+        {
+            "prompt": "condense medical report",
+            "expected_tool": "medx_summarize",
+            "rag_prediction": "medx_summarize, medx_dashboard, mri2cbct_approx, pre_aso_cbct, mri2cbct_tmj_crop, mri2cbct_resample, pre_aso_ios, mri2cbct_reg, mri2cbct_lr_crop, areg_cbct, batchdentalseg, mri2cbct_orient_center, docshapeaxi, automatrix, semi_aso_cbct ✅",
+            "llm_prediction": "medx_summarize ✅",
+            "Confidence": 0.8,
+            "Latency": 1.5679,
+            "reasoning": "The user is asking to condense a medical report, which suggests they want to summarize a large amount of clinical data into a concise and easily digestible format."
+        },
+        {
+            "prompt": "get MRI in CBCT space",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_reg, mri2cbct_approx, mri2cbct_resample, pre_aso_cbct, autocrop3d, mri2cbct_lr_crop, areg_cbct, mri2cbct_tmj_crop, semi_aso_cbct, mri2cbct_orient_center, batchdentalseg, amasss_cli, clic, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_reg ❌",
+            "Confidence": 1.0,
+            "Latency": 2.3441,
+            "reasoning": "The user wants to get MRI data in CBCT space, which means they need a tool that can register MRI volumes to CBCT reference frames. After analyzing the filtered tools, I recommend using 'mri2cbct_reg' as it is specifically designed for MRI-to-CBCT image registration with intensity normalization."
+        },
+        {
+            "prompt": "synchronize MRI and CBCT",
+            "expected_tool": "mri2cbct_reg",
+            "rag_prediction": "mri2cbct_reg, mri2cbct_approx, areg_cbct, mri2cbct_resample, pre_aso_cbct, semi_aso_cbct, mri2cbct_lr_crop, mri2cbct_tmj_crop, mri2cbct_orient_center, autocrop3d, amasss_cli, clic, batchdentalseg, ali_cbct, areg_ios ✅",
+            "llm_prediction": "mri2cbct_reg ✅",
+            "Confidence": 0.9,
+            "Latency": 2.234,
+            "reasoning": "The user is asking to synchronize MRI and CBCT scans, which suggests a multimodal registration task. After analyzing the filtered tools, I recommend using 'mri2cbct_reg' as it specifically handles MRI-to-CBCT image registration with intensity normalization for joint imaging analysis."
+        },
+        {
+            "prompt": "grab section for analysis",
+            "expected_tool": "mri2cbct_lr_crop",
+            "rag_prediction": "mri2cbct_tmj_crop, medx_summarize, mri2cbct_lr_crop, pre_aso_ios, autocrop3d, medx_dashboard, ali_ios, semi_aso_ios, docshapeaxi, semi_aso_cbct, pre_aso_cbct, batchdentalseg, areg_ios, mri2cbct_resample, amasss_cli ✅",
+            "llm_prediction": "none ❌",
+            "Confidence": 0.0,
+            "Latency": 0.7545,
+            "reasoning": ""
+        },
+        {
+            "prompt": "position MRI correctly",
+            "expected_tool": "mri2cbct_orient_center",
+            "rag_prediction": "mri2cbct_orient_center, mri2cbct_resample, mri2cbct_lr_crop, mri2cbct_approx, pre_aso_cbct, mri2cbct_tmj_crop, mri2cbct_reg, semi_aso_cbct, semi_aso_ios, autocrop3d, pre_aso_ios, areg_cbct, ali_cbct, ali_ios, areg_ios ✅",
+            "llm_prediction": "mri2cbct_orient_center ✅",
+            "Confidence": 0.9,
+            "Latency": 1.5188,
+            "reasoning": "The user is asking to position MRI scans correctly, which suggests they want to orient and center the MRI volumes for standardized positioning."
+        },
+        {
+            "prompt": "harmonize image sizes",
+            "expected_tool": "mri2cbct_resample",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_resample, pre_aso_cbct, mri2cbct_lr_crop, mri2cbct_reg, mri2cbct_orient_center, mri2cbct_tmj_crop, autocrop3d, automatrix, semi_aso_cbct, pre_aso_ios, areg_cbct, batchdentalseg, semi_aso_ios, areg_ios ✅",
+            "llm_prediction": "mri2cbct_resample ✅",
+            "Confidence": 0.9,
+            "Latency": 2.4986,
+            "reasoning": "The user is asking to harmonize image sizes, which suggests a need for resampling or registration tools. After analyzing the filtered list of tools, I recommend using 'mri2cbct_resample' as it allows for resampling MRI and CBCT scans to uniform spacing, which can help harmonize image sizes."
+        },
+        {
+            "prompt": "identify joint region",
+            "expected_tool": "mri2cbct_tmj_crop",
+            "rag_prediction": "mri2cbct_tmj_crop, mri2cbct_lr_crop, autocrop3d, semi_aso_ios, mri2cbct_orient_center, flexreg, semi_aso_cbct, ali_ios, ali_cbct, pre_aso_ios, docshapeaxi, areg_ios, pre_aso_cbct, batchdentalseg, mri2cbct_reg ✅",
+            "llm_prediction": "mri2cbct_tmj_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.2065,
+            "reasoning": "The user is asking to identify a joint region, which suggests they are interested in analyzing the Temporomandibular Joint (TMJ). Given this context, I will select the tool that can automatically segment and extract TMJ regions from MRI and CBCT scans."
+        },
+        {
+            "prompt": "ready CBCT for processing",
+            "expected_tool": "pre_aso_cbct",
+            "rag_prediction": "pre_aso_cbct, areg_cbct, mri2cbct_approx, semi_aso_cbct, clic, mri2cbct_reg, autocrop3d, batchdentalseg, mri2cbct_resample, ali_cbct, pre_aso_ios, amasss_cli, mri2cbct_lr_crop, automatrix, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "pre_aso_cbct ✅",
+            "Confidence": 0.8,
+            "Latency": 3.2183,
+            "reasoning": "The user wants to process a CBCT scan, which suggests they want to perform some kind of analysis or segmentation on the image. Among the filtered tools, pre_aso_cbct and semi_aso_cbct are relevant as they both deal with preprocessing and orientation for subsequent automated segmentation pipelines. However, since the request is not specific about segmentation, I will choose a more general tool that can handle CBCT processing. Therefore, I select: **pre_aso_cbct**"
+        },
+        {
+            "prompt": "adjust scan alignment",
+            "expected_tool": "pre_aso_ios",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, semi_aso_cbct, pre_aso_ios, semi_aso_ios, mri2cbct_resample, areg_ios, areg_cbct, ali_ios, mri2cbct_approx, mri2cbct_lr_crop, automatrix, mri2cbct_tmj_crop, autocrop3d, ali_cbct ✅",
+            "llm_prediction": "mri2cbct_orient_center ❌",
+            "Confidence": 0.9,
+            "Latency": 1.9435,
+            "reasoning": "The user wants to adjust the scan alignment, which suggests they want to orient and center their scans for standardized positioning. This is a common task in medical imaging, especially when working with MRI or CBCT scans."
+        },
+        {
+            "prompt": "mark CBCT landmarks",
+            "expected_tool": "semi_aso_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, areg_cbct, autocrop3d, mri2cbct_approx, pre_aso_cbct, ali_ios, mri2cbct_reg, clic, semi_aso_ios, amasss_cli, batchdentalseg, mri2cbct_lr_crop, areg_ios, automatrix ✅",
+            "llm_prediction": "ali_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 2.2022,
+            "reasoning": "The user wants to mark CBCT landmarks, which suggests they are looking for a tool that can detect and identify anatomical reference points on cone-beam CT volumes for precise dental and maxillofacial measurements and analysis. Based on this requirement, the most relevant tool is **ali_cbct**."
+        },
+        {
+            "prompt": "align scan properly",
+            "expected_tool": "semi_aso_ios",
+            "rag_prediction": "mri2cbct_orient_center, pre_aso_cbct, semi_aso_cbct, pre_aso_ios, semi_aso_ios, areg_ios, mri2cbct_resample, ali_ios, areg_cbct, mri2cbct_approx, automatrix, ali_cbct, flexreg, mri2cbct_reg, mri2cbct_lr_crop ✅",
+            "llm_prediction": "areg_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 3.7429,
+            "reasoning": "The user wants to align a scan properly, which suggests that they are looking for a registration or alignment tool. Since the request is not specific to a particular type of scan (e.g., MRI, CBCT, or IOS), I will consider all options. However, since the user wants proper alignment, I will prioritize tools that perform registration or alignment tasks.\r\n\r\nBased on this analysis, I recommend using 'areg_cbct' for automatic registration of CBCT images for longitudinal studies. This tool can register baseline and follow-up CBCT scans using deformable or rigid registration to track anatomical changes over time."
+        },
+        {
+            "prompt": "detecter les points de repere sur CBCT",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "semi_aso_cbct, ali_cbct, pre_aso_cbct, clic, areg_cbct, autocrop3d, mri2cbct_approx, mri2cbct_reg, batchdentalseg, amasss_cli, mri2cbct_resample, mri2cbct_tmj_crop, mri2cbct_lr_crop, semi_aso_ios, ali_ios ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4886,
+            "reasoning": "The user is asking to detect anatomical reference points on cone-beam CT volumes for precise dental and maxillofacial measurements and analysis."
+        },
+        {
+            "prompt": "segmentation des structures dentaires",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "batchdentalseg, amasss_cli, pre_aso_ios, docshapeaxi, semi_aso_ios, clic, mri2cbct_tmj_crop, semi_aso_cbct, pre_aso_cbct, autocrop3d, mri2cbct_approx, areg_ios, ali_ios, mri2cbct_lr_crop, ali_cbct ✅",
+            "llm_prediction": "batchdentalseg ❌",
+            "Confidence": 0.9,
+            "Latency": 1.5656,
+            "reasoning": "The user is asking for segmentation of dental structures, which suggests they want to automatically identify and separate different parts of the teeth or surrounding tissues from a CBCT scan."
+        },
+        {
+            "prompt": "enregistrer les images CBCT",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "mri2cbct_reg, areg_cbct, pre_aso_cbct, mri2cbct_approx, semi_aso_cbct, batchdentalseg, clic, mri2cbct_resample, ali_cbct, autocrop3d, mri2cbct_lr_crop, areg_ios, automatrix, mri2cbct_tmj_crop, amasss_cli ✅",
+            "llm_prediction": "areg_cbct: Automatic Registration of CBCT images for longitudinal studies. ❌",
+            "Confidence": 0.9,
+            "Latency": 1.9656,
+            "reasoning": "The user wants to register CBCT images, which suggests they are looking for a tool that can align and merge multiple CBCT scans or volumes. Based on this requirement, I recommend the following tools:"
+        },
+        {
+            "prompt": "creer tableau de bord medical",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, medx_summarize, mri2cbct_reg, mri2cbct_lr_crop, mri2cbct_tmj_crop, pre_aso_cbct, mri2cbct_resample, mri2cbct_orient_center, mri2cbct_approx, areg_cbct, docshapeaxi, areg_ios, automatrix, autocrop3d, ali_cbct ✅",
+            "llm_prediction": "medx_dashboard ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3508,
+            "reasoning": "The user is asking to create a medical dashboard, which suggests they want an interactive visualization of medical data and analysis summaries."
+        },
+        {
+            "prompt": "approximation IRM vers CBCT",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, semi_aso_cbct, clic, pre_aso_cbct, amasss_cli, autocrop3d, areg_cbct, ali_cbct, batchdentalseg, mri2cbct_reg, mri2cbct_resample, mri2cbct_tmj_crop, mri2cbct_lr_crop, docshapeaxi, automatrix ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.4418,
+            "reasoning": "The user is asking for an approximation of MRI to CBCT, which suggests a multimodal registration and fusion task."
+        },
+        {
+            "prompt": "detecter les reperes sur l intraoral",
+            "expected_tool": "ali_ios",
+            "rag_prediction": "ali_ios, pre_aso_ios, areg_ios, batchdentalseg, semi_aso_ios, ali_cbct, clic, flexreg, docshapeaxi, semi_aso_cbct, amasss_cli, pre_aso_cbct, autocrop3d, mri2cbct_tmj_crop, mri2cbct_lr_crop ✅",
+            "llm_prediction": "ali_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.1854,
+            "reasoning": "The user wants to detect landmarks on an intraoral scan (IOS)."
+        },
+        {
+            "prompt": "segmenter les dents rapidement",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "batchdentalseg, clic, autocrop3d, pre_aso_ios, pre_aso_cbct, mri2cbct_tmj_crop, semi_aso_ios, semi_aso_cbct, amasss_cli, docshapeaxi, mri2cbct_approx, mri2cbct_lr_crop, areg_ios, mri2cbct_resample, ali_ios ✅",
+            "llm_prediction": "amasss_cli ✅",
+            "Confidence": 0.8,
+            "Latency": 1.369,
+            "reasoning": "The user wants to quickly segment teeth, which suggests instance segmentation of dental structures from CBCT scans."
+        },
+        {
+            "prompt": "registrer les scans rapidement",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "mri2cbct_reg, pre_aso_cbct, areg_cbct, mri2cbct_resample, areg_ios, mri2cbct_approx, mri2cbct_orient_center, semi_aso_cbct, batchdentalseg, automatrix, pre_aso_ios, autocrop3d, mri2cbct_tmj_crop, ali_cbct, mri2cbct_lr_crop ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.8,
+            "Latency": 1.373,
+            "reasoning": "The user wants to register the scans quickly, which suggests a need for efficient and automated registration tools."
+        },
+        {
+            "prompt": "creer un dashbord",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "flexreg, semi_aso_ios, medx_dashboard, pre_aso_ios, mri2cbct_tmj_crop, mri2cbct_orient_center, ali_ios, semi_aso_cbct, areg_ios, mri2cbct_lr_crop, autocrop3d, pre_aso_cbct, ali_cbct, mri2cbct_resample, medx_summarize ✅",
+            "llm_prediction": "medx_dashboard ✅",
+            "Confidence": 0.9,
+            "Latency": 1.2296,
+            "reasoning": "The user wants to create a dashboard for visual exploration of medical data and analysis summaries."
+        },
+        {
+            "prompt": "convertir l IRM",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, areg_ios, mri2cbct_resample, automatrix, mri2cbct_reg, mri2cbct_lr_crop, mri2cbct_orient_center, pre_aso_cbct, medx_summarize, autocrop3d, semi_aso_ios, semi_aso_cbct, mri2cbct_tmj_crop, pre_aso_ios, docshapeaxi ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.1864,
+            "reasoning": "The user wants to convert MRI scans into CBCT format."
+        },
+        {
+            "prompt": "detectar puntos en CBCT",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "semi_aso_cbct, ali_cbct, pre_aso_cbct, clic, areg_cbct, mri2cbct_approx, amasss_cli, autocrop3d, mri2cbct_reg, batchdentalseg, mri2cbct_lr_crop, semi_aso_ios, mri2cbct_resample, pre_aso_ios, docshapeaxi ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.3915,
+            "reasoning": "The user is asking to detect points on a CBCT scan, which suggests they are looking for anatomical landmarks or reference points."
+        },
+        {
+            "prompt": "segmentar estructuras dentales",
+            "expected_tool": "amasss_cli",
+            "rag_prediction": "pre_aso_ios, batchdentalseg, semi_aso_ios, docshapeaxi, flexreg, amasss_cli, semi_aso_cbct, areg_ios, clic, ali_ios, mri2cbct_lr_crop, mri2cbct_tmj_crop, pre_aso_cbct, ali_cbct, mri2cbct_approx ✅",
+            "llm_prediction": "batchdentalseg ❌",
+            "Confidence": 0.9,
+            "Latency": 2.1162,
+            "reasoning": "The user is asking to segment dental structures, which suggests they are looking for a tool that can automatically identify and separate different parts of the teeth or jaw from CBCT scans. Based on this request, I will prioritize tools that have 'segmentation' as one of their main functions."
+        },
+        {
+            "prompt": "registrar imagenes CBCT",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "areg_cbct, mri2cbct_reg, pre_aso_cbct, mri2cbct_approx, semi_aso_cbct, ali_cbct, batchdentalseg, clic, autocrop3d, amasss_cli, mri2cbct_lr_crop, automatrix, areg_ios, mri2cbct_resample, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.6765,
+            "reasoning": "The user is asking to register CBCT images, which suggests a registration task between two or more CBCT scans. Given this information, I will select the most relevant tool from the filtered list."
+        },
+        {
+            "prompt": "crear panel de datos",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "medx_dashboard, medx_summarize, areg_ios, docshapeaxi, flexreg, pre_aso_ios, semi_aso_ios, automatrix, clic, batchdentalseg, mri2cbct_tmj_crop, pre_aso_cbct, mri2cbct_orient_center, amasss_cli, mri2cbct_resample ✅",
+            "llm_prediction": "medx_dashboard ✅",
+            "Confidence": 0.8,
+            "Latency": 1.2068,
+            "reasoning": "The user is requesting to create a dashboard for medical data and analysis summaries."
+        },
+        {
+            "prompt": "aproximacion MRI a CBCT",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, pre_aso_cbct, mri2cbct_resample, areg_cbct, semi_aso_cbct, mri2cbct_lr_crop, mri2cbct_tmj_crop, amasss_cli, clic, autocrop3d, mri2cbct_orient_center, batchdentalseg, ali_cbct, automatrix ✅",
+            "llm_prediction": "mri2cbct_approx ✅",
+            "Confidence": 0.9,
+            "Latency": 1.5835,
+            "reasoning": "The user is asking for an approximation of MRI to CBCT, which suggests they want to preprocess and register the two modalities for multimodal analysis."
+        },
+        {
+            "prompt": "I have a series of CBCT images from a patient taken at baseline and at a 6-month follow-up appointment, and I would like to register these images together to compare the changes over time. Can you help me align these two datasets so I can see exactly what has changed in the anatomical structures?",
+            "expected_tool": "areg_cbct",
+            "rag_prediction": "areg_cbct, mri2cbct_reg, mri2cbct_approx, semi_aso_cbct, pre_aso_cbct, ali_cbct, amasss_cli, batchdentalseg, mri2cbct_lr_crop, areg_ios, mri2cbct_resample, clic, automatrix, autocrop3d, mri2cbct_orient_center ✅",
+            "llm_prediction": "areg_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 1.5528,
+            "reasoning": "The user is looking to register CBCT scans taken at different time points (baseline and 6-month follow-up) for longitudinal analysis of anatomical changes."
+        },
+        {
+            "prompt": "We have multiple dental patients with intraoral scans that we need to segment and analyze for automated detection of dental structures and anatomical landmarks. I need a batch processing solution that can handle dozens of scans at once and provide detailed segmentation results for each one.",
+            "expected_tool": "batchdentalseg",
+            "rag_prediction": "batchdentalseg, pre_aso_ios, amasss_cli, clic, areg_ios, semi_aso_ios, ali_ios, semi_aso_cbct, docshapeaxi, pre_aso_cbct, ali_cbct, autocrop3d, mri2cbct_approx, areg_cbct, mri2cbct_tmj_crop ✅",
+            "llm_prediction": "batchdentalseg ✅",
+            "Confidence": 0.9,
+            "Latency": 1.6587,
+            "reasoning": "The user is looking for a batch processing solution that can handle multiple intraoral scans, segment dental structures and anatomical landmarks, and provide detailed segmentation results for each scan."
+        },
+        {
+            "prompt": "I'm working on a research project where I need to convert MRI images from the head and neck region into the CBCT coordinate space so that I can perform comparative analysis and overlay the datasets for surgical planning purposes. The goal is to create a unified representation that combines both modalities.",
+            "expected_tool": "mri2cbct_approx",
+            "rag_prediction": "mri2cbct_approx, mri2cbct_reg, pre_aso_cbct, mri2cbct_resample, areg_cbct, semi_aso_cbct, mri2cbct_lr_crop, mri2cbct_tmj_crop, autocrop3d, mri2cbct_orient_center, amasss_cli, ali_cbct, batchdentalseg, clic, automatrix ✅",
+            "llm_prediction": "mri2cbct_reg ❌",
+            "Confidence": 0.9,
+            "Latency": 2.1099,
+            "reasoning": "The user needs to register MRI scans of the head and neck region with CBCT scans in order to perform multimodal registration, fusion, and comparison. This requires an MRI-to-CBCT image registration tool that can handle deformable registration and intensity normalization."
+        },
+        {
+            "prompt": "We need to analyze the temporomandibular joint region in detail from both MRI and CBCT imaging modalities. The scans need to be registered together, cropped to the specific joint area, and then analyzed for morphological changes and degenerative features that might indicate temporomandibular disorder.",
+            "expected_tool": "mri2cbct_tmj_crop",
+            "rag_prediction": "mri2cbct_tmj_crop, mri2cbct_lr_crop, mri2cbct_reg, autocrop3d, mri2cbct_approx, pre_aso_cbct, areg_cbct, amasss_cli, batchdentalseg, semi_aso_cbct, docshapeaxi, pre_aso_ios, ali_cbct, mri2cbct_orient_center, clic ✅",
+            "llm_prediction": "mri2cbct_tmj_crop ✅",
+            "Confidence": 0.9,
+            "Latency": 2.595,
+            "reasoning": "The user is requesting a detailed analysis of the temporomandibular joint (TMJ) region from both MRI and CBCT imaging modalities. To achieve this, we need to register the scans together, crop them to the specific joint area, and then analyze for morphological changes and degenerative features that might indicate temporomandibular disorder."
+        },
+        {
+            "prompt": "I have a collection of 3D dental scan surfaces from multiple patients with different tooth alignments and morphologies. I need to perform a comprehensive shape analysis to compare geometric variations across the patient population and identify any outliers or unusual dental surface characteristics.",
+            "expected_tool": "docshapeaxi",
+            "rag_prediction": "docshapeaxi, pre_aso_ios, areg_ios, ali_ios, semi_aso_ios, batchdentalseg, flexreg, amasss_cli, clic, ali_cbct, semi_aso_cbct, automatrix, autocrop3d, pre_aso_cbct, areg_cbct ✅",
+            "llm_prediction": "docshapeaxi ✅",
+            "Confidence": 0.9,
+            "Latency": 2.8175,
+            "reasoning": "The user is seeking a comprehensive shape analysis for comparing geometric variations across a patient population, which suggests they want to analyze the 3D dental scan surfaces as a whole rather than focusing on specific teeth or regions. The request also implies a need for statistical shape analysis and classification of the dental meshes with interpretability and morphometric feature extraction. Based on these requirements, I recommend using the 'docshapeaxi' tool."
+        },
+        {
+            "prompt": "Our clinic is implementing an automated workflow for dental image processing where we need to take raw CBCT scans, preprocess them for optimal segmentation quality, apply various transformations and registrations, and then generate a comprehensive medical dashboard that displays all the results and metrics for clinical review.",
+            "expected_tool": "medx_dashboard",
+            "rag_prediction": "pre_aso_cbct, batchdentalseg, areg_cbct, mri2cbct_approx, automatrix, pre_aso_ios, semi_aso_cbct, amasss_cli, mri2cbct_reg, clic, ali_cbct, autocrop3d, areg_ios, docshapeaxi, semi_aso_ios ❌",
+            "llm_prediction": "pre_aso_cbct ❌",
+            "Confidence": 0.9,
+            "Latency": 1.9524,
+            "reasoning": "The user's request involves preprocessing CBCT scans for optimal segmentation quality, applying transformations and registrations, and generating a comprehensive medical dashboard. This suggests a multi-step process requiring tools with capabilities in image processing, registration, and visualization."
+        },
+        {
+            "prompt": "I'm conducting a comparative study between MRI and CBCT imaging for jaw anatomy assessment. The protocol requires me to resample both modalities to identical spatial resolution, register them to the same coordinate system, and then extract specific anatomical regions for side-by-side asymmetry analysis between left and right sides of the mandible.",
+            "expected_tool": "mri2cbct_resample",
+            "rag_prediction": "mri2cbct_lr_crop, mri2cbct_reg, pre_aso_cbct, mri2cbct_approx, mri2cbct_tmj_crop, mri2cbct_resample, areg_cbct, semi_aso_cbct, autocrop3d, amasss_cli, batchdentalseg, mri2cbct_orient_center, ali_cbct, pre_aso_ios, semi_aso_ios ✅",
+            "llm_prediction": "mri2cbct_resample ✅",
+            "Confidence": 1.0,
+            "Latency": 2.3417,
+            "reasoning": "The user is conducting a comparative study between MRI and CBCT imaging for jaw anatomy assessment. The protocol requires resampling both modalities to identical spatial resolution, registering them to the same coordinate system, and extracting specific anatomical regions for side-by-side asymmetry analysis between left and right sides of the mandible."
+        },
+        {
+            "prompt": "We need to set up a semi-automated preprocessing pipeline for intraoral scan data where the system can automatically detect anatomical landmarks, use them to determine the correct 3D orientation, and then standardize the position of each scan in a consistent way for downstream analysis and comparison with other scans in our database.",
+            "expected_tool": "semi_aso_ios",
+            "rag_prediction": "pre_aso_ios, ali_ios, semi_aso_ios, semi_aso_cbct, pre_aso_cbct, ali_cbct, areg_ios, mri2cbct_approx, mri2cbct_orient_center, docshapeaxi, amasss_cli, batchdentalseg, areg_cbct, autocrop3d, automatrix ✅",
+            "llm_prediction": "semi_aso_ios ✅",
+            "Confidence": 0.9,
+            "Latency": 1.8589,
+            "reasoning": "The user is looking for a semi-automated preprocessing pipeline for intraoral scan data that can automatically detect anatomical landmarks, determine the correct 3D orientation, and standardize the position of each scan."
+        },
+        {
+            "prompt": "I have acquired high-resolution CBCT images of dental and maxillofacial structures, and I want to perform a detailed landmark-based analysis to identify key anatomical points that are important for orthodontic treatment planning. These landmarks will be used to assess skeletal relationships and guide clinical decision-making.",
+            "expected_tool": "ali_cbct",
+            "rag_prediction": "ali_cbct, semi_aso_cbct, ali_ios, semi_aso_ios, pre_aso_cbct, autocrop3d, areg_cbct, amasss_cli, mri2cbct_approx, clic, mri2cbct_reg, pre_aso_ios, docshapeaxi, mri2cbct_lr_crop, batchdentalseg ✅",
+            "llm_prediction": "ali_cbct ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0598,
+            "reasoning": "The user is looking to perform a detailed landmark-based analysis on CBCT images of dental and maxillofacial structures, specifically for orthodontic treatment planning. This requires the detection of key anatomical points that are important for assessing skeletal relationships and guiding clinical decision-making."
+        },
+        {
+            "prompt": "We're implementing a multimodal imaging analysis system that requires flexible surface registration between dental casts, intraoral scans, and radiographic images. The system needs to handle different patch sizes and registration parameters to achieve optimal alignment while preserving fine anatomical details for surgical navigation applications.",
+            "expected_tool": "flexreg",
+            "rag_prediction": "flexreg, areg_ios, pre_aso_ios, mri2cbct_approx, semi_aso_ios, mri2cbct_reg, docshapeaxi, ali_ios, areg_cbct, semi_aso_cbct, ali_cbct, batchdentalseg, amasss_cli, pre_aso_cbct, autocrop3d ✅",
+            "llm_prediction": "flexreg ✅",
+            "Confidence": 0.9,
+            "Latency": 2.0227,
+            "reasoning": "The user is looking for a tool that can perform flexible surface registration between dental casts, intraoral scans, and radiographic images, with the ability to handle different patch sizes and registration parameters to achieve optimal alignment while preserving fine anatomical details for surgical navigation applications."
+        }
+    ]
+}
