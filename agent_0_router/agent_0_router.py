@@ -14,8 +14,8 @@ queries_type = "tool_only"
 
 # ----- FILE PATHS -----
 script_folder = Path(__file__).parent.resolve()
-tools_list_path = script_folder.parent / 'input' / 'tools_list.json'
-queries_list_path = script_folder.parent / 'input' / 'user_queries' / f'{queries_type}.json'
+tools_list_path = script_folder.parent / 'input' / 'documentation' / 'tools_list_exemples.json'
+queries_list_path = script_folder.parent / 'input' / 'tool' / f'{queries_type}.json'
 results_path = script_folder / 'output' / f'{model.replace(":", "-")}_{queries_type}.json'
 
 # ----- PYDANTIC SCHEMA -----
