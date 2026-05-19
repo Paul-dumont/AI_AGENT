@@ -7,7 +7,7 @@ from pathlib import Path
 
 # ----- VARIABLES -----
 model = "llama3:latest" #
-ratio_queries = 0.1 #%
+ratio_queries = 1 #%
 queries_type = "tool_only" 
 # queries_type = "tool_param_expert_vocab" 
 
