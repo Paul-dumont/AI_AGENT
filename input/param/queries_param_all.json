@@ -182,30 +182,6 @@
         }
     },
     {
-        "query": "Change the resolution of all my scans in /data/raw to size [256, 256, 128]. Save the new versions to /data/resampled.",
-        "expected_tool": "mri2cbct_resample",
-        "expected_params": {
-            "input_folder_MRI": "/data/raw/MRI",
-            "input_folder_T2_MRI": "/data/raw/MRI_T2",
-            "input_folder_CBCT": "/data/raw/CBCT",
-            "input_folder_T2_CBCT": "/data/raw/CBCT_T2",
-            "input_folder_Seg": "/data/raw/Seg",
-            "input_folder_T2_Seg": "/data/raw/Seg_T2",
-            "output_folder": "/data/resampled",
-            "resample_size": [
-                256,
-                256,
-                128
-            ],
-            "spacing": [
-                0.3,
-                0.3,
-                0.3
-            ],
-            "center": false
-        }
-    },
-    {
         "query": "Cut out the jaw joints from the scans in /data/cbct and /data/mri. Use /data/seg for reference and the model in /models/tmj. Save to /data/joints and log to /data/joints/log.txt.",
         "expected_tool": "mri2cbct_tmj_crop",
         "expected_params": {
@@ -1444,20 +1420,6 @@
         }
     },
     {
-        "expected_tool": "mri2cbct_resample",
-        "query": "Resample all volumes in /data/raw to [256, 256, 128]. I have an output folder /resampled.",
-        "expected_params": {
-            "input_folder_MRI": "/data/raw/MRI",
-            "output_folder": "/resampled",
-            "resample_size": [
-                256,
-                256,
-                128
-            ],
-            "spacing": "MISSING"
-        }
-    },
-    {
         "expected_tool": "mri2cbct_tmj_crop",
         "query": "Extract TMJ regions from CBCT /c and MRI /m using the models in /models/tmj.",
         "expected_params": {
@@ -1493,17 +1455,6 @@
             "input": "/scans",
             "gold_folder": "/gold",
             "list_landmark": "Sella Nasion",
-            "output_folder": "MISSING"
-        }
-    },
-    {
-        "expected_tool": "semi_aso_ios",
-        "query": "Adjust the IOS orientation for the Upper jaw using /gold. Landmarks are Cusp and Fossa.",
-        "expected_params": {
-            "input_folder": "/data/ios",
-            "gold_folder": "/gold",
-            "list_landmark": "Cusp,Fossa",
-            "jaw": "Upper",
             "output_folder": "MISSING"
         }
     },

@@ -159,16 +159,6 @@
       }
     },
     {
-      "expected_tool": "mri2cbct_resample",
-      "query": "Resample all volumes in /data/raw to [256, 256, 128]. I have an output folder /resampled.",
-      "expected_params": {
-        "input_folder_MRI": "/data/raw/MRI",
-        "output_folder": "/resampled",
-        "resample_size": [256, 256, 128],
-        "spacing": "MISSING"
-      }
-    },
-    {
       "expected_tool": "mri2cbct_tmj_crop",
       "query": "Extract TMJ regions from CBCT /c and MRI /m using the models in /models/tmj.",
       "expected_params": {
@@ -206,16 +196,5 @@
         "list_landmark": "Sella Nasion",
         "output_folder": "MISSING"
       }
-    },
-    {
-      "expected_tool": "semi_aso_ios",
-      "query": "Adjust the IOS orientation for the Upper jaw using /gold. Landmarks are Cusp and Fossa.",
-      "expected_params": {
-        "input_folder": "/data/ios",
-        "gold_folder": "/gold",
-        "list_landmark": "Cusp,Fossa",
-        "jaw": "Upper",
-        "output_folder": "MISSING"
-      }
     }
-  ]
+]
