@@ -4,13 +4,13 @@
     "model": "llama3:latest",
     "metrics": {
         "total_queries": 23,
-        "avg_extraction_latency": 2.1988,
+        "avg_extraction_latency": 7.5594,
         "total_with_expected_params": 23,
         "total_perfect_matches": 13,
         "query_accuracy_percentage": 56.52,
         "total_expected_individual_params": 119,
-        "total_correct_individual_params": 98,
-        "param_accuracy_percentage": 82.35
+        "total_correct_individual_params": 97,
+        "param_accuracy_percentage": 81.51
     },
     "details": [
         {
@@ -24,16 +24,9 @@
                 "temp_fold": "/tmp",
                 "DCMInput": false
             },
-            "extracted_params": {
-                "input": "/data/scans",
-                "dir_models": "/models/ali",
-                "lm_type": "",
-                "output_dir": "/output",
-                "temp_fold": "/tmp",
-                "DCMInput": false
-            },
-            "extraction_latency": 2.0063817501068115,
-            "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the ALI_CBCT tool."
+            "extracted_params": {},
+            "extraction_latency": 76.19537281990051,
+            "extraction_reasoning": "Error: 1 validation error for ParameterExtraction\n  Invalid JSON: EOF while parsing a string at line 6 column 9352 [type=json_invalid, input_value='{ \"reasoning\": \"Based on...--><!--- type: list ---', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/json_invalid"
         },
         {
             "prompt": "J'ai besoin d'extraire les landmarks dentaires pour les dents 8 et 9 sur le scan /data/ios_scan.stl. Utilise les modèles dans /weights/ios et sauvegarde dans /results/ios. Log le processus dans /results/ios/ali.log.",
@@ -49,13 +42,13 @@
             "extracted_params": {
                 "input": "/data/ios_scan.stl",
                 "dir_models": "/weights/ios",
-                "lm_type": "dental landmarks",
+                "lm_type": "dental_landmarks",
                 "teeth": "8 9",
                 "output_dir": "/results/ios",
                 "log_path": "/results/ios/ali.log"
             },
-            "extraction_latency": 2.448735475540161,
-            "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the ALI_IOS tool."
+            "extraction_latency": 5.173135757446289,
+            "extraction_reasoning": "Extracted parameters based on the user's prompt."
         },
         {
             "prompt": "Effectue une segmentation automatique de la mandibule et du maxillaire sur les scans dans /data/volumes. Utilise les modèles nnUNet de /models/amasss, place les masques dans /output/seg et log l'opération dans /output/seg/amasss.log.",
@@ -74,7 +67,7 @@
                 "output_folder": "/output/seg",
                 "temp_fold": "/output/seg/amasss.log"
             },
-            "extraction_latency": 2.8653576374053955,
+            "extraction_latency": 5.044986724853516,
             "extraction_reasoning": "Automatic segmentation of mandible and maxilla on scans in /data/volumes using nnUNet models from /models/amasss, placing masks in /output/seg and logging operation in /output/seg/amasss.log."
         },
         {
@@ -97,7 +90,7 @@
                 "DCMInput": false,
                 "mask_folder_t1": "None"
             },
-            "extraction_latency": 2.341501235961914,
+            "extraction_latency": 4.393723011016846,
             "extraction_reasoning": "Extracted parameters based on the user's prompt."
         },
         {
@@ -119,7 +112,7 @@
                 "log_path": "/scans/aligned/reg.log",
                 "areg_mode": "Auto_IOS"
             },
-            "extraction_latency": 2.7870171070098877,
+            "extraction_latency": 8.941945791244507,
             "extraction_reasoning": "Automatic Registration of Intraoral Scans using Iterative Closest Point (ICP). Registers baseline and follow-up IOS surfaces for longitudinal dental tracking and treatment outcome assessment."
         },
         {
@@ -139,7 +132,7 @@
                 "box_Size": true,
                 "logPath": "/data/cropped/log.txt"
             },
-            "extraction_latency": 2.0228843688964844,
+            "extraction_latency": 4.481829404830933,
             "extraction_reasoning": "Extracted parameters from user prompt"
         },
         {
@@ -159,10 +152,11 @@
                 "input_matrix": "/data/matrices",
                 "reference_file": "/data/ref.nii.gz",
                 "output_folder": "/data/output",
-                "log_path": "/data/output/matrix.log"
+                "log_path": "/data/output/matrix.log",
+                "is_seg": false
             },
-            "extraction_latency": 1.9550178050994873,
-            "extraction_reasoning": "Automatrix"
+            "extraction_latency": 4.024306535720825,
+            "extraction_reasoning": "Automatrix CLI"
         },
         {
             "prompt": "Lance une segmentation dentaire par lot sur le dossier /data/cbct_scans. Utilise les poids du modèle dans /models/dental_weights, sauvegarde dans /data/masks et enregistre le log dans /data/masks/batch.log.",
@@ -179,7 +173,7 @@
                 "models_folder": "/models/dental_weights",
                 "log_path": "/data/masks/batch.log"
             },
-            "extraction_latency": 1.6139912605285645,
+            "extraction_latency": 3.051565170288086,
             "extraction_reasoning": "Extracted parameters based on the user's prompt"
         },
         {
@@ -195,7 +189,7 @@
                 "model_folder": "/models/clic",
                 "output_dir": "/data/clic_masks"
             },
-            "extraction_latency": 1.2219762802124023,
+            "extraction_latency": 3.7864058017730713,
             "extraction_reasoning": "Analyzing the user's prompt..."
         },
         {
@@ -215,14 +209,14 @@
                 "input_dir": "/data/meshes",
                 "output_dir": "/data/shape_results",
                 "data_type": "Path to trained ShapeAXI model",
-                "><!--- This parameter is not specified, so I will leave it as is. --->  ": "",
+                "><!--- This parameter is not specified, so I will leave it as is. It's required but no value is provided.---&#x20;  ": "",
                 "task": "Classification with 3 classes via ResNet model",
                 "model": "ResNet",
                 "nn": "ResNet",
                 "num_classes": 3,
                 "log_path": "/data/shape_results/log.txt"
             },
-            "extraction_latency": 3.3685920238494873,
+            "extraction_latency": 6.571599006652832,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the 'docshapeaxi' tool."
         },
         {
@@ -238,8 +232,8 @@
                 "patch_type": "butterfly",
                 "output_folder": "/data"
             },
-            "extraction_latency": 1.2985661029815674,
-            "extraction_reasoning": "Extracted parameters based on the user's prompt."
+            "extraction_latency": 2.961787223815918,
+            "extraction_reasoning": "Extracting parameters from the user's prompt..."
         },
         {
             "prompt": "Génère un tableau de bord interactif à partir des résumés cliniques dans /data/reports. Sauvegarde les fichiers HTML dans /data/dashboard.",
@@ -252,7 +246,7 @@
                 "summary_folder": "/data/reports",
                 "output_folder": "/data/dashboard"
             },
-            "extraction_latency": 1.2933061122894287,
+            "extraction_latency": 2.651756525039673,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MedX Dashboard tool."
         },
         {
@@ -270,8 +264,8 @@
                 "output_folder": "/data/summaries",
                 "log_path": "/data/summaries/medx.log"
             },
-            "extraction_latency": 1.9742038249969482,
-            "extraction_reasoning": "Based on the user's prompt, I extracted the following parameters for the MedX Summarize tool:"
+            "extraction_latency": 4.010029315948486,
+            "extraction_reasoning": "Extracted parameters based on the user's prompt"
         },
         {
             "prompt": "Réalise une approximation d'image IRM vers CBCT pour les fichiers dans /data/mri en utilisant /data/cbct comme référence. Sauvegarde les sorties dans /data/approx_images.",
@@ -286,7 +280,7 @@
                 "mri_folder": "/data/mri",
                 "output_folder": "/data/approx_images"
             },
-            "extraction_latency": 1.6834092140197754,
+            "extraction_latency": 4.1892101764678955,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_APPROX tool."
         },
         {
@@ -304,7 +298,7 @@
                 "cbct_folder": "/data/cbct",
                 "cbct_label2": "/data/masks"
             },
-            "extraction_latency": 1.9748477935791016,
+            "extraction_latency": 3.852799415588379,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_REG tool."
         },
         {
@@ -322,7 +316,7 @@
                 "input_folder_Seg": "/data/seg",
                 "output_folder": "/data/lr_output"
             },
-            "extraction_latency": 1.6545162200927734,
+            "extraction_latency": 3.8315577507019043,
             "extraction_reasoning": "Parameter extraction for MRI2CBCT_LR_CROP tool"
         },
         {
@@ -340,8 +334,8 @@
                 "output_folder": "/data/centered_mri",
                 "acquisition_z_spacing": 1.5
             },
-            "extraction_latency": 3.763242244720459,
-            "extraction_reasoning": "User request: Réoriente et centre les IRM brutes dans /data/mri_raw. Utilise la direction standard [-1,0,0,0,-1,0,0,0,1] et un espacement Z de 1.5. Sortie : /data/centered_mri."
+            "extraction_latency": 5.142333507537842,
+            "extraction_reasoning": "User request to reorient and center MRI scans in /data/mri_raw using the standard direction [-1,0,0,0,-1,0,0,0,1] and a Z-axis spacing of 1.5mm, with output in /data/centered_mri."
         },
         {
             "prompt": "Rééchantillonne tous les volumes du dossier /data/raw vers une taille de [256, 256, 128]. Sauvegarde les nouveaux fichiers dans /data/resampled.",
@@ -379,11 +373,15 @@
                     256,
                     128
                 ],
-                "spacing": [],
+                "spacing": [
+                    0.3,
+                    0.3,
+                    0.3
+                ],
                 "center": false
             },
-            "extraction_latency": 3.8061342239379883,
-            "extraction_reasoning": "Resample all MRI and CBCT scans from the /data/raw folder to a size of [256, 256, 128] and save them in the /data/resampled folder."
+            "extraction_latency": 5.7593677043914795,
+            "extraction_reasoning": "Resample all MRI and CBCT scans from the input folder to a uniform size of [256, 256, 128] and save them in the output folder."
         },
         {
             "prompt": "Extrais les régions de l'articulation temporo-mandibulaire (ATM) des scans CBCT et IRM. Utilise les segmentations dans /data/seg et le modèle /models/tmj. Sauvegarde dans /data/tmj_crops et log dans /data/tmj_crops/run.log.",
@@ -397,15 +395,15 @@
                 "tmp_folder": "/data/tmj_crops/run.log"
             },
             "extracted_params": {
-                "cbct_folder": "/data",
-                "mri_folder": "/data",
+                "cbct_folder": "/data/cbct",
+                "mri_folder": "/data/mri",
                 "seg_folder": "/data/seg",
                 "output_folder": "/data/tmj_crops",
                 "model_folder": "/models/tmj",
                 "tmp_folder": "/data/tmj_crops"
             },
-            "extraction_latency": 1.9193353652954102,
-            "extraction_reasoning": "Extracting parameters from user prompt..."
+            "extraction_latency": 6.320872783660889,
+            "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_TMJ_CROP tool."
         },
         {
             "prompt": "Prépare les scans CBCT dans /data/raw pour l'orientation ASO. Utilise le modèle dans /models/aso, enregistre dans /data/pre_aso et log dans /data/pre_aso/log.txt. Entrée non-DICOM.",
@@ -424,8 +422,8 @@
                 "temp_folder": "/data/pre_aso/log.txt",
                 "DCMInput": false
             },
-            "extraction_latency": 2.0564799308776855,
-            "extraction_reasoning": "Prépare les scans CBCT dans /data/raw pour l'orientation ASO."
+            "extraction_latency": 3.1927692890167236,
+            "extraction_reasoning": "Extracted parameters based on the user's prompt."
         },
         {
             "prompt": "Standardise l'orientation des scans intraoraux de /data/ios par rapport à la référence /data/gold. Traite les dents 8 et 9 (maxillaire) avec occlusion. Sortie : /data/oriented_ios. Log : /data/oriented_ios/process.log.",
@@ -448,8 +446,8 @@
                 "jaw": "Upper",
                 "log_path": "/data/oriented_ios/process.log"
             },
-            "extraction_latency": 2.945756196975708,
-            "extraction_reasoning": "Standardizing the orientation of intraoral scans in /data/ios with respect to the reference /data/gold, treating teeth 8 and 9 (maxillaire) with occlusion."
+            "extraction_latency": 3.5492424964904785,
+            "extraction_reasoning": "extracting parameters from user prompt"
         },
         {
             "prompt": "Réoriente les scans CBCT dans /data/scans en utilisant les points Sella et Nasion. Utilise le dossier de référence /data/gold et sauvegarde dans /data/fixed_orientation.",
@@ -466,7 +464,7 @@
                 "output_folder": "/data/fixed_orientation",
                 "list_landmark": "Sella Nasion"
             },
-            "extraction_latency": 1.4298787117004395,
+            "extraction_latency": 3.2014007568359375,
             "extraction_reasoning": "semi_aso_cbct"
         },
         {
@@ -490,7 +488,7 @@
                 "jaw": "Upper",
                 "log_path": "/data/semi_aso_out/semi.log"
             },
-            "extraction_latency": 2.1412107944488525,
+            "extraction_latency": 3.538126230239868,
             "extraction_reasoning": "Extracted parameters from user prompt"
         }
     ]

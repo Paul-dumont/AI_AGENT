@@ -4,7 +4,7 @@
     "model": "llama3:latest",
     "metrics": {
         "total_queries": 23,
-        "avg_extraction_latency": 2.0061,
+        "avg_extraction_latency": 1.9777,
         "total_with_expected_params": 23,
         "total_perfect_matches": 14,
         "query_accuracy_percentage": 60.87,
@@ -32,7 +32,7 @@
                 "temp_fold": "/tmp",
                 "DCMInput": false
             },
-            "extraction_latency": 2.0499179363250732,
+            "extraction_latency": 1.7706329822540283,
             "extraction_reasoning": "Parameter Extraction Agent for medical and dental imaging tools"
         },
         {
@@ -54,7 +54,7 @@
                 "output_dir": "/results/ios",
                 "log_path": "/results/ios/ali.log"
             },
-            "extraction_latency": 2.3970444202423096,
+            "extraction_latency": 2.293299674987793,
             "extraction_reasoning": "Extracted parameters based on the user's prompt"
         },
         {
@@ -74,7 +74,7 @@
                 "output_folder": "/output/seg",
                 "temp_fold": "/output/seg/amasss.log"
             },
-            "extraction_latency": 2.1079704761505127,
+            "extraction_latency": 2.077960968017578,
             "extraction_reasoning": "Automatic segmentation of mandible and maxilla using AMASSS tool."
         },
         {
@@ -97,7 +97,7 @@
                 "DCMInput": false,
                 "mask_folder_t1": "None"
             },
-            "extraction_latency": 2.113603353500366,
+            "extraction_latency": 2.1544480323791504,
             "extraction_reasoning": "Parameter extraction for AREG_CBCT tool"
         },
         {
@@ -119,7 +119,7 @@
                 "log_path": "/scans/aligned/reg.log",
                 "areg_mode": "Auto_IOS"
             },
-            "extraction_latency": 2.700117349624634,
+            "extraction_latency": 2.7401928901672363,
             "extraction_reasoning": "Automatic Registration of Intraoral Scans using Iterative Closest Point (ICP). Registers baseline and follow-up IOS surfaces for longitudinal dental tracking and treatment outcome assessment."
         },
         {
@@ -139,7 +139,7 @@
                 "box_Size": true,
                 "logPath": "/data/cropped/log.txt"
             },
-            "extraction_latency": 1.8004348278045654,
+            "extraction_latency": 1.848527431488037,
             "extraction_reasoning": "Extracted parameters based on the user's prompt"
         },
         {
@@ -162,7 +162,7 @@
                 "log_path": "/data/output/matrix.log",
                 "is_seg": false
             },
-            "extraction_latency": 1.6787846088409424,
+            "extraction_latency": 1.7455084323883057,
             "extraction_reasoning": "Automatrix CLI"
         },
         {
@@ -180,7 +180,7 @@
                 "models_folder": "/models/dental_weights",
                 "log_path": "/data/masks/batch.log"
             },
-            "extraction_latency": 1.9000244140625,
+            "extraction_latency": 1.937126874923706,
             "extraction_reasoning": "Based on the user's prompt, I extracted the following parameters for the 'batchdentalseg' tool:"
         },
         {
@@ -196,7 +196,7 @@
                 "model_folder": "/models/clic",
                 "output_dir": "/data/clic_masks"
             },
-            "extraction_latency": 1.523108959197998,
+            "extraction_latency": 1.4630367755889893,
             "extraction_reasoning": "Based on the user's prompt, I extracted the following parameters for the CLIC tool:"
         },
         {
@@ -222,7 +222,7 @@
                 "num_classes": 3,
                 "log_path": "/data/shape_results/log.txt"
             },
-            "extraction_latency": 2.5654635429382324,
+            "extraction_latency": 2.472160816192627,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the 'docshapeaxi' tool."
         },
         {
@@ -238,7 +238,7 @@
                 "patch_type": "butterfly",
                 "output_folder": "/data"
             },
-            "extraction_latency": 1.1310155391693115,
+            "extraction_latency": 1.1020917892456055,
             "extraction_reasoning": "flexreg"
         },
         {
@@ -252,7 +252,7 @@
                 "summary_folder": "/data/reports",
                 "output_folder": "/data/dashboard"
             },
-            "extraction_latency": 1.291743516921997,
+            "extraction_latency": 1.216705322265625,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MedX Dashboard tool."
         },
         {
@@ -270,7 +270,7 @@
                 "output_folder": "/data/summaries",
                 "log_path": "/data/summaries/medx.log"
             },
-            "extraction_latency": 2.0754709243774414,
+            "extraction_latency": 1.964388370513916,
             "extraction_reasoning": "Based on the user's prompt, I extracted the following parameters for the MedX Summarize tool:"
         },
         {
@@ -286,7 +286,7 @@
                 "mri_folder": "/data/mri",
                 "output_folder": "/data/approx_images"
             },
-            "extraction_latency": 1.796724796295166,
+            "extraction_latency": 1.6444907188415527,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_APPROX tool."
         },
         {
@@ -304,7 +304,7 @@
                 "cbct_folder": "/data/cbct",
                 "cbct_label2": "/data/masks"
             },
-            "extraction_latency": 2.153228521347046,
+            "extraction_latency": 1.9811060428619385,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_REG tool."
         },
         {
@@ -322,7 +322,7 @@
                 "input_folder_Seg": "/data/seg",
                 "output_folder": "/data/lr_output"
             },
-            "extraction_latency": 2.166106700897217,
+            "extraction_latency": 2.027268648147583,
             "extraction_reasoning": "Separa os lados esquerdo e direito dos scans para análise de assimetria."
         },
         {
@@ -340,7 +340,7 @@
                 "output_folder": "/data/centered_mri",
                 "acquisition_z_spacing": 1.5
             },
-            "extraction_latency": 2.398369312286377,
+            "extraction_latency": 2.353832960128784,
             "extraction_reasoning": "User's prompt"
         },
         {
@@ -377,7 +377,7 @@
                 "spacing": [],
                 "center": false
             },
-            "extraction_latency": 1.706117868423462,
+            "extraction_latency": 1.767838478088379,
             "extraction_reasoning": "Parameter Extraction for MRI2CBCT_RESAMPLE_CBCT_MRI"
         },
         {
@@ -399,7 +399,7 @@
                 "model_folder": "/models/tmj",
                 "tmp_folder": "/data/tmj_crops/run.log"
             },
-            "extraction_latency": 2.468022108078003,
+            "extraction_latency": 2.626901865005493,
             "extraction_reasoning": "Based on the user's prompt, I extracted the required parameters for the MRI2CBCT_TMJ_CROP tool."
         },
         {
@@ -419,7 +419,7 @@
                 "temp_folder": "/data/pre_aso/log.txt",
                 "DCMInput": false
             },
-            "extraction_latency": 1.62353515625,
+            "extraction_latency": 1.678361415863037,
             "extraction_reasoning": "extracted parameters from user prompt"
         },
         {
@@ -443,7 +443,7 @@
                 "jaw": "Upper",
                 "log_path": "/data/oriented_ios/process.log"
             },
-            "extraction_latency": 2.45768666267395,
+            "extraction_latency": 2.5235536098480225,
             "extraction_reasoning": "Padroniza a orientação dos scans intraaurais de /data/ios em relação à referência /data/gold."
         },
         {
@@ -461,7 +461,7 @@
                 "output_folder": "/data/fixed_orientation",
                 "list_landmark": "Sella Nasion"
             },
-            "extraction_latency": 1.8483874797821045,
+            "extraction_latency": 1.8424649238586426,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the semi_aso_cbct tool."
         },
         {
@@ -485,7 +485,7 @@
                 "jaw": "Upper",
                 "log_path": "/data/semi_aso_out/semi.log"
             },
-            "extraction_latency": 2.186415672302246,
+            "extraction_latency": 2.2547147274017334,
             "extraction_reasoning": "Parameter Extraction Agent for medical and dental imaging tools"
         }
     ]

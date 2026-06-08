@@ -1,21 +1,19 @@
 {
-    "mode": "parameter_extraction_only",
-    "queries_type": "spanish",
+    "queries_type": "french",
     "model": "llama3:latest",
     "metrics": {
         "total_queries": 23,
-        "avg_extraction_latency": 2.1228,
-        "total_with_expected_params": 23,
-        "total_perfect_matches": 15,
-        "query_accuracy_percentage": 65.22,
-        "total_expected_individual_params": 119,
-        "total_correct_individual_params": 106,
-        "param_accuracy_percentage": 89.08
+        "Reranker_correct": 22,
+        "Reranker_perfect": 22,
+        "Router_accuracy": 22,
+        "Agent_Param Correct": 82.35,
+        "Agent_Param Perfect": 15
     },
     "details": [
         {
-            "prompt": "Detecta los puntos de referencia anatómicos en los volúmenes CBCT en /data/scans. Usa los modelos de /models/ali, guarda en /output y usa /tmp para archivos temporales. No son archivos DICOM.",
+            "prompt": "Peux-tu identifier les points de repère anatomiques sur les volumes CBCT dans /data/scans ? Utilise les modèles de /models/ali, enregistre les résultats dans /output et utilise /tmp pour les fichiers temporaires. Ce ne sont pas des DICOM.",
             "expected_tool": "ali_cbct",
+            "selected_tool": "ali_cbct",
             "expected_params": {
                 "input": "/data/scans",
                 "dir_models": "/models/ali",
@@ -24,20 +22,19 @@
                 "temp_fold": "/tmp",
                 "DCMInput": false
             },
-            "extracted_params": {
+            "selected_params": {
                 "input": "/data/scans",
                 "dir_models": "/models/ali",
-                "lm_type": "",
+                "lm_type": "1,2,3",
                 "output_dir": "/output",
                 "temp_fold": "/tmp",
-                "DCMInput": false
-            },
-            "extraction_latency": 1.8581631183624268,
-            "extraction_reasoning": "Extracted parameters from user prompt"
+                "DCMInput": "false"
+            }
         },
         {
-            "prompt": "Extrae los landmarks dentales para los dientes 8 y 9 en el escaneo /data/ios_scan.stl. Usa los modelos en /weights/ios y guarda en /results/ios. Registra el proceso en /results/ios/ali.log.",
+            "prompt": "J'ai besoin d'extraire les landmarks dentaires pour les dents 8 et 9 sur le scan /data/ios_scan.stl. Utilise les modèles dans /weights/ios et sauvegarde dans /results/ios. Log le processus dans /results/ios/ali.log.",
             "expected_tool": "ali_ios",
+            "selected_tool": "ali_ios",
             "expected_params": {
                 "input": "/data/ios_scan.stl",
                 "dir_models": "/weights/ios",
@@ -46,20 +43,19 @@
                 "output_dir": "/results/ios",
                 "log_path": "/results/ios/ali.log"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input": "/data/ios_scan.stl",
                 "dir_models": "/weights/ios",
-                "lm_type": "dental",
+                "lm_type": "dental_landmarks",
                 "teeth": "8 9",
                 "output_dir": "/results/ios",
                 "log_path": "/results/ios/ali.log"
-            },
-            "extraction_latency": 2.123220682144165,
-            "extraction_reasoning": "Extracted parameters from user prompt"
+            }
         },
         {
-            "prompt": "Realiza una segmentación automática de la mandíbula y el maxilar en los escaneos de /data/volumes. Usa los modelos nnUNet de /models/amasss, guarda las máscaras en /output/seg y registra la operación en /output/seg/amasss.log.",
+            "prompt": "Effectue une segmentation automatique de la mandibule et du maxillaire sur les scans dans /data/volumes. Utilise les modèles nnUNet de /models/amasss, place les masques dans /output/seg et log l'opération dans /output/seg/amasss.log.",
             "expected_tool": "amasss_cli",
+            "selected_tool": "amasss_cli",
             "expected_params": {
                 "inputVolume": "/data/volumes",
                 "modelDirectory": "/models/amasss",
@@ -67,19 +63,12 @@
                 "output_folder": "/output/seg",
                 "temp_fold": "/output/seg/amasss.log"
             },
-            "extracted_params": {
-                "inputVolume": "/data/volumes",
-                "modelDirectory": "/models/amasss",
-                "skullStructure": "mandible, maxilla",
-                "output_folder": "/output/seg",
-                "temp_fold": "/output/seg/amasss.log"
-            },
-            "extraction_latency": 2.192227363586426,
-            "extraction_reasoning": "Automatic segmentation of mandible and maxilla using AMASSS tool"
+            "selected_params": {}
         },
         {
-            "prompt": "Alinea los escaneos iniciales (T1) de /data/T1 con los de seguimiento (T2) en /data/T2 usando registro tipo MAND. Guarda el alineamiento en /data/reg_out y usa /data/tmp para el caché. Entrada no-DICOM.",
+            "prompt": "Ajuste les scans initiaux (T1) de /data/T1 avec les scans de suivi (T2) dans /data/T2 en utilisant une registration de type MAND. Sauvegarde l'alignement dans /data/reg_out et utilise /data/tmp pour le cache. Entrée non-DICOM.",
             "expected_tool": "areg_cbct",
+            "selected_tool": "areg_cbct",
             "expected_params": {
                 "t1_folder": "/data/T1",
                 "t2_folder": "/data/T2",
@@ -88,7 +77,7 @@
                 "DCMInput": false,
                 "temp_folder": "/data/tmp"
             },
-            "extracted_params": {
+            "selected_params": {
                 "t1_folder": "/data/T1",
                 "t2_folder": "/data/T2",
                 "reg_type": "MAND",
@@ -96,13 +85,12 @@
                 "temp_folder": "/data/tmp",
                 "DCMInput": false,
                 "mask_folder_t1": "None"
-            },
-            "extraction_latency": 2.2293779850006104,
-            "extraction_reasoning": "Parameter extraction for AREG_CBCT tool"
+            }
         },
         {
-            "prompt": "Lleva a cabo el registro de superficies dentales entre /scans/T1 y /scans/T2. Utiliza el modelo de refinamiento en /models/refine, guarda el resultado en /scans/aligned y crea un log en /scans/aligned/reg.log.",
+            "prompt": "Réalise le recalage des surfaces dentaires entre /scans/T1 et /scans/T2. Utilise le modèle de raffinement dans /models/refine, enregistre le résultat dans /scans/aligned et crée un log dans /scans/aligned/reg.log.",
             "expected_tool": "areg_ios",
+            "selected_tool": "areg_ios",
             "expected_params": {
                 "T1": "/scans/T1",
                 "T2": "/scans/T2",
@@ -111,20 +99,19 @@
                 "log_path": "/scans/aligned/reg.log",
                 "areg_mode": "Auto_IOS"
             },
-            "extracted_params": {
+            "selected_params": {
                 "T1": "/scans/T1",
                 "T2": "/scans/T2",
                 "output": "/scans/aligned",
                 "model": "/models/refine",
                 "log_path": "/scans/aligned/reg.log",
                 "areg_mode": "Auto_IOS"
-            },
-            "extraction_latency": 2.827651023864746,
-            "extraction_reasoning": "Automatic Registration of Intraoral Scans using Iterative Closest Point (ICP). Registers baseline and follow-up IOS surfaces for longitudinal dental tracking and treatment outcome assessment."
+            }
         },
         {
-            "prompt": "Recorta las regiones de interés de los volúmenes en /data/raw usando el archivo de marcadores ROI /data/roi.json. Guarda los archivos recortados en /data/cropped y mantén las dimensiones físicas. Log: /data/cropped/log.txt.",
+            "prompt": "Découpe les zones d'intérêt des volumes dans /data/raw en utilisant le fichier de marqueurs ROI /data/roi.json. Enregistre les fichiers recadrés dans /data/cropped et conserve les dimensions physiques. Log : /data/cropped/log.txt.",
             "expected_tool": "autocrop3d",
+            "selected_tool": "autocrop3d",
             "expected_params": {
                 "scan_files_path": "/data/raw",
                 "path_ROI_file": "/data/roi.json",
@@ -132,19 +119,18 @@
                 "box_Size": true,
                 "logPath": "/data/cropped/log.txt"
             },
-            "extracted_params": {
+            "selected_params": {
                 "scan_files_path": "/data/raw",
                 "path_ROI_file": "/data/roi.json",
                 "output_path": "/data/cropped",
                 "box_Size": true,
                 "logPath": "/data/cropped/log.txt"
-            },
-            "extraction_latency": 1.9222805500030518,
-            "extraction_reasoning": "Extracted parameters based on the user's prompt"
+            }
         },
         {
-            "prompt": "Aplica las matrices de transformación de /data/matrices al escaneo /data/patient.nii.gz. Usa /data/ref.nii.gz como referencia y guarda el volumen transformado en /data/output. Log en /data/output/matrix.log.",
+            "prompt": "Applique les matrices de transformation de /data/matrices au scan /data/patient.nii.gz. Utilise /data/ref.nii.gz comme référence et sauvegarde le volume transformé dans /data/output. Log le transfert dans /data/output/matrix.log.",
             "expected_tool": "automatrix",
+            "selected_tool": "automatrix",
             "expected_params": {
                 "input_patient": "/data/patient.nii.gz",
                 "input_matrix": "/data/matrices",
@@ -154,7 +140,7 @@
                 "fromAreg": false,
                 "is_seg": false
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_patient": "/data/patient.nii.gz",
                 "input_matrix": "/data/matrices",
                 "reference_file": "/data/ref.nii.gz",
@@ -162,47 +148,44 @@
                 "log_path": "/data/output/matrix.log",
                 "is_seg": false,
                 "fromAreg": false
-            },
-            "extraction_latency": 2.161672830581665,
-            "extraction_reasoning": "extracting parameters from user prompt"
+            }
         },
         {
-            "prompt": "Ejecuta una segmentación dental por lotes en la carpeta /data/cbct_scans. Usa los pesos del modelo en /models/dental_weights, guarda en /data/masks y registra el log en /data/masks/batch.log.",
+            "prompt": "Lance une segmentation dentaire par lot sur le dossier /data/cbct_scans. Utilise les poids du modèle dans /models/dental_weights, sauvegarde dans /data/masks et enregistre le log dans /data/masks/batch.log.",
             "expected_tool": "batchdentalseg",
+            "selected_tool": "batchdentalseg",
             "expected_params": {
                 "input_folder": "/data/cbct_scans",
                 "output_folder": "/data/masks",
                 "models_folder": "/models/dental_weights",
                 "log_path": "/data/masks/batch.log"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_folder": "/data/cbct_scans",
                 "output_folder": "/data/masks",
                 "models_folder": "/models/dental_weights",
                 "log_path": "/data/masks/batch.log"
-            },
-            "extraction_latency": 1.8728702068328857,
-            "extraction_reasoning": "Parameter extraction for batch dental segmentation using nnUNet in 3D Slicer."
+            }
         },
         {
-            "prompt": "Usa la herramienta CLIC para segmentar las estructuras dentales en /data/patients. Los modelos están en /models/clic y las máscaras de salida irán a /data/clic_masks.",
+            "prompt": "Utilise l'outil CLIC pour segmenter les structures dentaires dans /data/patients. Les modèles sont dans /models/clic et les masques de sortie iront dans /data/clic_masks.",
             "expected_tool": "clic",
+            "selected_tool": "clic",
             "expected_params": {
                 "input_path": "/data/patients",
                 "model_folder": "/models/clic",
                 "output_dir": "/data/clic_masks"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_path": "/data/patients",
                 "model_folder": "/models/clic",
                 "output_dir": "/data/clic_masks"
-            },
-            "extraction_latency": 1.3295090198516846,
-            "extraction_reasoning": "Extracting parameters for CLIC tool"
+            }
         },
         {
-            "prompt": "Analiza la morfología de las mallas en /data/meshes. Realiza una clasificación de 3 clases con el modelo resnet. Guarda los resultados en /data/shape_results y el log en /data/shape_results/log.txt.",
+            "prompt": "Analyse la morphologie des maillages dans /data/meshes. Effectue une classification avec 3 classes via le modèle resnet. Enregistre les résultats dans /data/shape_results et log dans /data/shape_results/log.txt.",
             "expected_tool": "docshapeaxi",
+            "selected_tool": "docshapeaxi",
             "expected_params": {
                 "input_dir": "/data/meshes",
                 "output_dir": "/data/shape_results",
@@ -213,140 +196,133 @@
                 "num_classes": 3,
                 "log_path": "/data/shape_results/log.txt"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_dir": "/data/meshes",
                 "output_dir": "/data/shape_results",
-                "data_type": "",
+                "data_type": "MISSING",
+                "><!--- data type is not specified, so it's missing ---></li> ": "",
                 "task": "classification",
                 "model": "resnet",
                 "nn": "resnet",
                 "num_classes": 3,
                 "log_path": "/data/shape_results/log.txt"
-            },
-            "extraction_latency": 2.682899236679077,
-            "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the 'docshapeaxi' tool."
+            }
         },
         {
-            "prompt": "Realiza un registro flexible (deformable) en la superficie /data/tooth.vtk. Usa el método 'butterfly' y coloca el resultado en /data/warped_output.",
+            "prompt": "Effectue un recalage flexible (deformable) sur la surface /data/tooth.vtk. Utilise la méthode 'butterfly' et place le résultat dans /data/warped_output.",
             "expected_tool": "flexreg",
+            "selected_tool": "flexreg",
             "expected_params": {
                 "input_surface": "/data/tooth.vtk",
                 "patch_type": "butterfly",
                 "output_folder": "/data/warped_output"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_surface": "/data/tooth.vtk",
                 "patch_type": "butterfly",
                 "output_folder": "/data"
-            },
-            "extraction_latency": 1.3298413753509521,
-            "extraction_reasoning": "Extracted parameters based on the user's prompt."
+            }
         },
         {
-            "prompt": "Genera un panel interactivo (dashboard) a partir de los resúmenes clínicos en /data/reports. Guarda los archivos HTML en /data/dashboard.",
+            "prompt": "Génère un tableau de bord interactif à partir des résumés cliniques dans /data/reports. Sauvegarde les fichiers HTML dans /data/dashboard.",
             "expected_tool": "medx_dashboard",
+            "selected_tool": "medx_dashboard",
             "expected_params": {
                 "summary_folder": "/data/reports",
                 "output_folder": "/data/dashboard"
             },
-            "extracted_params": {
+            "selected_params": {
                 "summary_folder": "/data/reports",
                 "output_folder": "/data/dashboard"
-            },
-            "extraction_latency": 1.343604326248169,
-            "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MedX Dashboard tool."
+            }
         },
         {
-            "prompt": "Produce una síntesis de las notas médicas en /data/notes con el modelo t5-base. Guarda los resúmenes en /data/summaries y el log en /data/summaries/medx.log.",
+            "prompt": "Produis une synthèse des notes médicales situées dans /data/notes avec le modèle t5-base. Enregistre les résumés dans /data/summaries et le log dans /data/summaries/medx.log.",
             "expected_tool": "medx_summarize",
+            "selected_tool": "medx_summarize",
             "expected_params": {
                 "input_notes": "/data/notes",
                 "input_model": "t5-base",
                 "output_folder": "/data/summaries",
                 "log_path": "/data/summaries/medx.log"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_notes": "/data/notes",
                 "input_model": "t5-base",
                 "output_folder": "/data/summaries",
                 "log_path": "/data/summaries/medx.log"
-            },
-            "extraction_latency": 1.9496269226074219,
-            "extraction_reasoning": "User request matches the MedX Summarize tool schema."
+            }
         },
         {
-            "prompt": "Realiza una aproximación de imagen RM a CBCT para los archivos en /data/mri usando /data/cbct como referencia. Guarda los resultados en /data/approx_images.",
+            "prompt": "Réalise une approximation d'image IRM vers CBCT pour les fichiers dans /data/mri en utilisant /data/cbct comme référence. Sauvegarde les sorties dans /data/approx_images.",
             "expected_tool": "mri2cbct_approx",
+            "selected_tool": "mri2cbct_approx",
             "expected_params": {
                 "cbct_folder": "/data/cbct",
                 "mri_folder": "/data/mri",
                 "output_folder": "/data/approx_images"
             },
-            "extracted_params": {
+            "selected_params": {
                 "cbct_folder": "/data/cbct",
                 "mri_folder": "/data/mri",
                 "output_folder": "/data/approx_images"
-            },
-            "extraction_latency": 1.7889456748962402,
-            "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_APPROX tool."
+            }
         },
         {
-            "prompt": "Alinea las secuencias RM de /data/mri con los volúmenes CBCT de /data/cbct. Usa las máscaras de /data/masks para guiar el registro y guarda en /data/aligned_mri.",
+            "prompt": "Aligne les séquences IRM de /data/mri sur les volumes CBCT de /data/cbct. Utilise les masques de /data/masks pour guider le recalage et sauvegarde dans /data/aligned_mri.",
             "expected_tool": "mri2cbct_reg",
+            "selected_tool": "mri2cbct_reg",
             "expected_params": {
                 "mri_folder": "/data/mri",
                 "cbct_folder": "/data/cbct",
                 "cbct_label2": "/data/masks",
                 "output_folder": "/data/aligned_mri"
             },
-            "extracted_params": {
+            "selected_params": {
                 "output_folder": "/data/aligned_mri",
                 "mri_folder": "/data/mri",
                 "cbct_folder": "/data/cbct",
                 "cbct_label2": "/data/masks"
-            },
-            "extraction_latency": 1.5398495197296143,
-            "extraction_reasoning": "User request analysis"
+            }
         },
         {
-            "prompt": "Separa los lados izquierdo y derecho de los escaneos para análisis de asimetría. CBCT: /data/cbct, RM: /data/mri, Seg: /data/seg. Coloca los recortes en /data/lr_output.",
+            "prompt": "Sépare les côtés gauche et droit des scans pour une analyse d'asymétrie. CBCT : /data/cbct, IRM : /data/mri, Seg : /data/seg. Place les dossiers de découpe dans /data/lr_output.",
             "expected_tool": "mri2cbct_lr_crop",
+            "selected_tool": "mri2cbct_lr_crop",
             "expected_params": {
                 "input_folder_CBCT": "/data/cbct",
                 "input_folder_MRI": "/data/mri",
                 "input_folder_Seg": "/data/seg",
                 "output_folder": "/data/lr_output"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_folder_CBCT": "/data/cbct",
                 "input_folder_MRI": "/data/mri",
                 "input_folder_Seg": "/data/seg",
                 "output_folder": "/data/lr_output"
-            },
-            "extraction_latency": 1.8052332401275635,
-            "extraction_reasoning": "Extracted parameters based on the user's prompt"
+            }
         },
         {
-            "prompt": "Reorienta y centra las RM brutas en /data/mri_raw. Usa la dirección estándar [-1,0,0,0,-1,0,0,0,1] y un espaciado Z de 1.5. Salida: /data/centered_mri.",
+            "prompt": "Réoriente et centre les IRM brutes dans /data/mri_raw. Utilise la direction standard [-1,0,0,0,-1,0,0,0,1] et un espacement Z de 1.5. Sortie : /data/centered_mri.",
             "expected_tool": "mri2cbct_orient_center",
+            "selected_tool": "mri2cbct_orient_center",
             "expected_params": {
                 "input_folder": "/data/mri_raw",
                 "direction": "-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0",
                 "output_folder": "/data/centered_mri",
                 "acquisition_z_spacing": 1.5
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_folder": "/data/mri_raw",
                 "direction": "-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0",
                 "output_folder": "/data/centered_mri",
                 "acquisition_z_spacing": 1.5
-            },
-            "extraction_latency": 2.5125741958618164,
-            "extraction_reasoning": "User request"
+            }
         },
         {
-            "prompt": "Remuestrea todos los volúmenes en la carpeta /data/raw a un tamaño de [256, 256, 128]. Guarda los nuevos archivos en /data/resampled.",
+            "prompt": "Rééchantillonne tous les volumes du dossier /data/raw vers une taille de [256, 256, 128]. Sauvegarde les nouveaux fichiers dans /data/resampled.",
             "expected_tool": "mri2cbct_resample",
+            "selected_tool": "none",
             "expected_params": {
                 "input_folder_MRI": "/data/raw/MRI",
                 "input_folder_T2_MRI": "/data/raw/MRI_T2",
@@ -367,32 +343,12 @@
                 ],
                 "center": false
             },
-            "extracted_params": {
-                "input_folder_MRI": "/data/raw",
-                "input_folder_T2_MRI": "/data/raw",
-                "input_folder_CBCT": "/data/raw",
-                "input_folder_T2_CBCT": "/data/raw",
-                "input_folder_Seg": "/data/raw",
-                "input_folder_T2_Seg": "/data/raw",
-                "output_folder": "/data/resampled",
-                "resample_size": [
-                    256,
-                    256,
-                    128
-                ],
-                "spacing": [
-                    0.3,
-                    0.3,
-                    0.3
-                ],
-                "center": false
-            },
-            "extraction_latency": 4.337774753570557,
-            "extraction_reasoning": "Resample all volumes in the folder /data/raw to size [256, 256, 128] and save them in /data/resampled."
+            "selected_params": {}
         },
         {
-            "prompt": "Extrae las regiones de la articulación temporomandibular (ATM) de los escaneos CBCT y RM. Usa las segmentaciones en /data/seg y el modelo /models/tmj. Guarda en /data/tmj_crops y log en /data/tmj_crops/run.log.",
+            "prompt": "Extrais les régions de l'articulation temporo-mandibulaire (ATM) des scans CBCT et IRM. Utilise les segmentations dans /data/seg et le modèle /models/tmj. Sauvegarde dans /data/tmj_crops et log dans /data/tmj_crops/run.log.",
             "expected_tool": "mri2cbct_tmj_crop",
+            "selected_tool": "mri2cbct_tmj_crop",
             "expected_params": {
                 "cbct_folder": "/data/cbct",
                 "mri_folder": "/data/mri",
@@ -401,20 +357,19 @@
                 "model_folder": "/models/tmj",
                 "tmp_folder": "/data/tmj_crops/run.log"
             },
-            "extracted_params": {
+            "selected_params": {
                 "cbct_folder": "/data/cbct",
                 "mri_folder": "/data/mri",
                 "seg_folder": "/data/seg",
-                "model_folder": "/models/tmj",
                 "output_folder": "/data/tmj_crops",
+                "model_folder": "/models/tmj",
                 "tmp_folder": "/data/tmj_crops/run.log"
-            },
-            "extraction_latency": 2.4333882331848145,
-            "extraction_reasoning": "Extracted parameters based on the user's prompt"
+            }
         },
         {
-            "prompt": "Prepara los escaneos CBCT en /data/raw para la orientación ASO. Usa el modelo en /models/aso, guarda en /data/pre_aso y log en /data/pre_aso/log.txt. Entrada no-DICOM.",
+            "prompt": "Prépare les scans CBCT dans /data/raw pour l'orientation ASO. Utilise le modèle dans /models/aso, enregistre dans /data/pre_aso et log dans /data/pre_aso/log.txt. Entrée non-DICOM.",
             "expected_tool": "pre_aso_cbct",
+            "selected_tool": "pre_aso_cbct",
             "expected_params": {
                 "input": "/data/raw",
                 "output_folder": "/data/pre_aso",
@@ -422,19 +377,18 @@
                 "temp_folder": "/data/pre_aso/log.txt",
                 "DCMInput": false
             },
-            "extracted_params": {
+            "selected_params": {
                 "input": "/data/raw",
                 "output_folder": "/data/pre_aso",
                 "model_folder": "/models/aso",
                 "temp_folder": "/data/pre_aso/log.txt",
                 "DCMInput": false
-            },
-            "extraction_latency": 1.7661285400390625,
-            "extraction_reasoning": "Automatic Segmentation Orientation - CBCT"
+            }
         },
         {
-            "prompt": "Estandariza la orientación de los escaneos intraorales de /data/ios respecto a la referencia /data/gold. Procesa los dientes 8 y 9 (maxilar) con oclusión. Salida: /data/oriented_ios. Log: /data/oriented_ios/process.log.",
+            "prompt": "Standardise l'orientation des scans intraoraux de /data/ios par rapport à la référence /data/gold. Traite les dents 8 et 9 (maxillaire) avec occlusion. Sortie : /data/oriented_ios. Log : /data/oriented_ios/process.log.",
             "expected_tool": "pre_aso_ios",
+            "selected_tool": "pre_aso_ios",
             "expected_params": {
                 "input_folder": "/data/ios",
                 "gold_folder": "/data/gold",
@@ -444,7 +398,7 @@
                 "jaw": "Upper",
                 "log_path": "/data/oriented_ios/process.log"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_folder": "/data/ios",
                 "gold_folder": "/data/gold",
                 "output_folder": "/data/oriented_ios",
@@ -452,31 +406,29 @@
                 "occlusion": true,
                 "jaw": "Upper",
                 "log_path": "/data/oriented_ios/process.log"
-            },
-            "extraction_latency": 2.2790133953094482,
-            "extraction_reasoning": "Parameter Extraction for PRE_ASO_IOS"
+            }
         },
         {
-            "prompt": "Reorienta los escaneos CBCT en /data/scans usando los puntos Sella y Nasion. Usa la carpeta de referencia /data/gold y guarda en /data/fixed_orientation.",
+            "prompt": "Réoriente les scans CBCT dans /data/scans en utilisant les points Sella et Nasion. Utilise le dossier de référence /data/gold et sauvegarde dans /data/fixed_orientation.",
             "expected_tool": "semi_aso_cbct",
+            "selected_tool": "semi_aso_cbct",
             "expected_params": {
                 "input": "/data/scans",
                 "gold_folder": "/data/gold",
                 "output_folder": "/data/fixed_orientation",
                 "list_landmark": "Sella Nasion"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input": "/data/scans",
                 "gold_folder": "/data/gold",
                 "output_folder": "/data/fixed_orientation",
                 "list_landmark": "Sella Nasion"
-            },
-            "extraction_latency": 2.3501925468444824,
-            "extraction_reasoning": "Semi-Automatic Segmentation Orientation for CBCT using landmarks. Combines manually-placed anatomical landmarks with ICP-based registration to orient and standardize CBCT scans for consistent segmentation."
+            }
         },
         {
-            "prompt": "Ajusta la orientación de las superficies IOS en /data/ios mediante los landmarks Cusp y Fossa. Usa el maxilar superior y la referencia /data/gold. Guarda en /data/semi_aso_out y log en /data/semi_aso_out/semi.log.",
+            "prompt": "Ajuste l'orientation des surfaces IOS dans /data/ios via les landmarks Cusp et Fossa. Utilise la mâchoire supérieure et la référence /data/gold. Sauvegarde dans /data/semi_aso_out et log dans /data/semi_aso_out/semi.log.",
             "expected_tool": "semi_aso_ios",
+            "selected_tool": "semi_aso_ios",
             "expected_params": {
                 "input_folder": "/data/ios",
                 "gold_folder": "/data/gold",
@@ -486,7 +438,7 @@
                 "jaw": "Upper",
                 "log_path": "/data/semi_aso_out/semi.log"
             },
-            "extracted_params": {
+            "selected_params": {
                 "input_folder": "/data/ios",
                 "gold_folder": "/data/gold",
                 "output_folder": "/data/semi_aso_out",
@@ -494,9 +446,7 @@
                 "occlusion": true,
                 "jaw": "Upper",
                 "log_path": "/data/semi_aso_out/semi.log"
-            },
-            "extraction_latency": 2.188244342803955,
-            "extraction_reasoning": "Extracted parameters from user prompt"
+            }
         }
     ]
 }

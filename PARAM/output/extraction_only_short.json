@@ -4,7 +4,7 @@
     "model": "llama3:latest",
     "metrics": {
         "total_queries": 23,
-        "avg_extraction_latency": 1.8935,
+        "avg_extraction_latency": 1.8635,
         "total_with_expected_params": 23,
         "total_perfect_matches": 6,
         "query_accuracy_percentage": 26.09,
@@ -24,12 +24,12 @@
             "extracted_params": {
                 "input": "/data/cbct",
                 "dir_models": "/models/ali",
-                "lm_type": "1,2,3",
+                "lm_type": "",
                 "output_dir": "/out_dir",
                 "temp_fold": "",
                 "DCMInput": false
             },
-            "extraction_latency": 3.9870986938476562,
+            "extraction_latency": 1.7221896648406982,
             "extraction_reasoning": "Extracted parameters from user prompt"
         },
         {
@@ -48,7 +48,7 @@
                 "output_dir": "/results",
                 "log_path": ""
             },
-            "extraction_latency": 1.9584298133850098,
+            "extraction_latency": 1.6843626499176025,
             "extraction_reasoning": "extracted parameters based on user's prompt"
         },
         {
@@ -66,7 +66,7 @@
                 "output_folder": "/output",
                 "temp_fold": ""
             },
-            "extraction_latency": 1.5502357482910156,
+            "extraction_latency": 1.6034750938415527,
             "extraction_reasoning": "Extracted parameters based on user's prompt"
         },
         {
@@ -88,7 +88,7 @@
                 "><!--- default value for temp_folder is None, as it's not specified in the prompt ---&gt;  ": "",
                 "mask_folder_t1": "None"
             },
-            "extraction_latency": 2.726841926574707,
+            "extraction_latency": 2.803323745727539,
             "extraction_reasoning": "Extracted parameters from user prompt"
         },
         {
@@ -108,7 +108,7 @@
                 "log_path": "",
                 "><!-- default value, not provided by user --><!-- areg_mode": "Auto_IOS"
             },
-            "extraction_latency": 2.5866382122039795,
+            "extraction_latency": 2.67063570022583,
             "extraction_reasoning": "Automatic Registration of Intraoral Scans using Iterative Closest Point (ICP). Registers baseline and follow-up IOS surfaces for longitudinal dental tracking and treatment outcome assessment."
         },
         {
@@ -126,7 +126,7 @@
                 "box_Size": true,
                 "logPath": ""
             },
-            "extraction_latency": 1.5986402034759521,
+            "extraction_latency": 1.6352026462554932,
             "extraction_reasoning": "Extracted parameters based on user's prompt"
         },
         {
@@ -147,7 +147,7 @@
                 "fromAreg": false,
                 "is_seg": false
             },
-            "extraction_latency": 1.7676162719726562,
+            "extraction_latency": 1.8822569847106934,
             "extraction_reasoning": "Extracted parameters from user prompt"
         },
         {
@@ -164,7 +164,7 @@
                 "models_folder": "/models/nnunet",
                 "log_path": ""
             },
-            "extraction_latency": 1.711533784866333,
+            "extraction_latency": 1.7970225811004639,
             "extraction_reasoning": "Based on the user's prompt, I extracted the following parameters for the 'batchdentalseg' tool."
         },
         {
@@ -180,7 +180,7 @@
                 "model_folder": "/models/clic_v1",
                 "output_dir": "/masks"
             },
-            "extraction_latency": 1.2954230308532715,
+            "extraction_latency": 1.3255085945129395,
             "extraction_reasoning": "Extracted parameters from user's prompt"
         },
         {
@@ -202,7 +202,7 @@
                 "num_classes": 3,
                 "log_path": ""
             },
-            "extraction_latency": 2.0410172939300537,
+            "extraction_latency": 2.1814143657684326,
             "extraction_reasoning": "Based on the provided prompt, I will extract the required parameters for the 'docshapeaxi' tool."
         },
         {
@@ -218,7 +218,7 @@
                 "patch_type": "butterfly",
                 "output_folder": "/warped_out"
             },
-            "extraction_latency": 1.2771365642547607,
+            "extraction_latency": 1.4061055183410645,
             "extraction_reasoning": "Extracted parameters based on user prompt"
         },
         {
@@ -232,7 +232,7 @@
                 "summary_folder": "/reports/summaries",
                 "output_folder": "/web_out"
             },
-            "extraction_latency": 0.9458298683166504,
+            "extraction_latency": 0.9946603775024414,
             "extraction_reasoning": "Extracted parameters based on user prompt"
         },
         {
@@ -249,7 +249,7 @@
                 "output_folder": "/summaries",
                 "log_path": ""
             },
-            "extraction_latency": 1.403393030166626,
+            "extraction_latency": 1.5002949237823486,
             "extraction_reasoning": "Extracted parameters based on user's prompt"
         },
         {
@@ -265,7 +265,7 @@
                 "mri_folder": "/mri_dir",
                 "output_folder": "/approx_out"
             },
-            "extraction_latency": 1.559232473373413,
+            "extraction_latency": 1.7258474826812744,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the 'mri2cbct_approx' tool."
         },
         {
@@ -283,7 +283,7 @@
                 "cbct_folder": "/cbct",
                 "cbct_label2": "/seg"
             },
-            "extraction_latency": 1.4702813625335693,
+            "extraction_latency": 1.7116098403930664,
             "extraction_reasoning": "Extracted parameters based on user's prompt"
         },
         {
@@ -301,7 +301,7 @@
                 "input_folder_Seg": "/s",
                 "output_folder": "/lr_results"
             },
-            "extraction_latency": 1.3216469287872314,
+            "extraction_latency": 1.3741445541381836,
             "extraction_reasoning": "Extracted parameters from user prompt"
         },
         {
@@ -318,7 +318,7 @@
                 "output_folder": "/centered",
                 "acquisition_z_spacing": 3.0
             },
-            "extraction_latency": 3.2062013149261475,
+            "extraction_latency": 3.314450979232788,
             "extraction_reasoning": "User wants to center MRI scans from the '/raw' folder using a specific direction (-1,0,0,0,-1,0,0,0,1) and output them to the '/centered' folder."
         },
         {
@@ -344,7 +344,7 @@
                 "spacing": [],
                 "center": false
             },
-            "extraction_latency": 2.016479015350342,
+            "extraction_latency": 2.1300785541534424,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the 'mri2cbct_resample' tool."
         },
         {
@@ -364,7 +364,7 @@
                 "model_folder": "",
                 "tmp_folder": ""
             },
-            "extraction_latency": 2.02976655960083,
+            "extraction_latency": 2.087991952896118,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the MRI2CBCT_TMJ_CROP tool."
         },
         {
@@ -382,7 +382,7 @@
                 "temp_folder": "",
                 "DCMInput": false
             },
-            "extraction_latency": 1.4263842105865479,
+            "extraction_latency": 1.485391616821289,
             "extraction_reasoning": "string"
         },
         {
@@ -403,7 +403,7 @@
                 "jaw": "Upper",
                 "log_path": ""
             },
-            "extraction_latency": 1.8460354804992676,
+            "extraction_latency": 1.901726245880127,
             "extraction_reasoning": "Standardizing Upper IOS /ios with gold /ref. Output to /out."
         },
         {
@@ -421,7 +421,7 @@
                 "output_folder": "/oriented",
                 "list_landmark": "Sella Nasion"
             },
-            "extraction_latency": 1.4633216857910156,
+            "extraction_latency": 1.500521183013916,
             "extraction_reasoning": "Extracted parameters based on user's prompt"
         },
         {
@@ -443,7 +443,7 @@
                 "jaw": "Lower",
                 "log_path": ""
             },
-            "extraction_latency": 2.3603382110595703,
+            "extraction_latency": 2.421827793121338,
             "extraction_reasoning": "Based on the user's prompt, I will extract the required parameters for the Semi-Automatic Segmentation Orientation (SEMI_ASO_IOS) tool."
         }
     ]

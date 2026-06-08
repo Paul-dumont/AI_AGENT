@@ -5,8 +5,8 @@
         "total_queries": 23,
         "Reranker_correct": 23,
         "Reranker_perfect": 21,
-        "Router_accuracy": 15,
-        "Agent_Param Correct": 60.76,
+        "Router_accuracy": 23,
+        "Agent_Param Correct": 83.54,
         "Agent_Param Perfect": 5
     },
     "details": [
@@ -22,7 +22,7 @@
             "selected_params": {
                 "input": "/data/cbct",
                 "dir_models": "/models/ali",
-                "lm_type": "1,2,3",
+                "lm_type": "ali",
                 "output_dir": "/out_dir",
                 "temp_fold": "",
                 "DCMInput": false
@@ -31,7 +31,7 @@
         {
             "prompt": "Extract landmarks for teeth 8 and 9 from /scans/ios.obj to /results.",
             "expected_tool": "ali_ios",
-            "selected_tool": "docshapeaxi",
+            "selected_tool": "ali_ios",
             "expected_params": {
                 "input": "/scans/ios.obj",
                 "teeth": "8 9",
@@ -42,13 +42,19 @@
         {
             "prompt": "Segment Mandible from /vol.nii.gz using /weights/amasss. Save to /output.",
             "expected_tool": "amasss_cli",
-            "selected_tool": "batchdentalseg",
+            "selected_tool": "amasss_cli",
             "expected_params": {
                 "inputVolume": "/vol.nii.gz",
                 "skullStructure": "Mandible",
                 "output_folder": "/output"
             },
-            "selected_params": {}
+            "selected_params": {
+                "inputVolume": "/vol.nii.gz",
+                "modelDirectory": "/weights",
+                "skullStructure": "Mandible",
+                "output_folder": "/output",
+                "temp_fold": ""
+            }
         },
         {
             "prompt": "Register T1 /data/T1 with T2 /data/T2 using MAND type to /reg_out.",
@@ -66,44 +72,65 @@
                 "reg_type": "MAND",
                 "output_folder": "/reg_out",
                 "DCMInput": false,
-                "temp_folder": "None",
-                "mask_folder_t1": "None"
+                "temp_folder": "",
+                "mask_folder_t1": ""
             }
         },
         {
             "prompt": "Align /T1.stl to /T2.stl with model /models/refine. Output to /aligned.",
             "expected_tool": "areg_ios",
-            "selected_tool": "flexreg",
+            "selected_tool": "areg_ios",
             "expected_params": {
                 "T1": "/T1.stl",
                 "T2": "/T2.stl",
                 "model": "/models/refine",
                 "output": "/aligned"
             },
-            "selected_params": {}
+            "selected_params": {
+                "T1": "/T1.stl",
+                "T2": "/T2.stl",
+                "output": "/aligned",
+                "model": "/models/refine",
+                "log_path": "",
+                "><!-- default value, not provided by user --><!-- no log path specified, so it's empty string --><!-- no areg_mode specified, so it defaults to ": ", which is the default value in the schema -->"
+            }
         },
         {
             "prompt": "Crop volumes in /raw using /meta/roi.json. Save results to /cropped.",
             "expected_tool": "autocrop3d",
-            "selected_tool": "flexreg",
+            "selected_tool": "autocrop3d",
             "expected_params": {
                 "scan_files_path": "/raw",
                 "path_ROI_file": "/meta/roi.json",
                 "output_path": "/cropped"
             },
-            "selected_params": {}
+            "selected_params": {
+                "scan_files_path": "/raw",
+                "path_ROI_file": "/meta/roi.json",
+                "output_path": "/cropped",
+                "box_Size": true,
+                "logPath": ""
+            }
         },
         {
             "prompt": "Apply /mats/m.txt to /scans/p.nii.gz with ref /ref.nii.gz to /out.",
             "expected_tool": "automatrix",
-            "selected_tool": "mri2cbct_reg",
+            "selected_tool": "automatrix",
             "expected_params": {
                 "input_patient": "/scans/p.nii.gz",
                 "input_matrix": "/mats/m.txt",
                 "reference_file": "/ref.nii.gz",
                 "output_folder": "/out"
             },
-            "selected_params": {}
+            "selected_params": {
+                "input_patient": "/scans/p.nii.gz",
+                "input_matrix": "/mats/m.txt",
+                "reference_file": "/ref.nii.gz",
+                "output_folder": "/out",
+                "log_path": "",
+                "><!-- log path is not specified, so it will be empty --></br>": "",
+                "is_seg": false
+            }
         },
         {
             "prompt": "Batch segment /all_scans with /models/nnunet. Save to /masks_out.",
@@ -139,14 +166,23 @@
         {
             "prompt": "Classify meshes in /meshes with resnet and 3 classes to /analysis.",
             "expected_tool": "docshapeaxi",
-            "selected_tool": "amasss_cli",
+            "selected_tool": "docshapeaxi",
             "expected_params": {
                 "input_dir": "/meshes",
                 "nn": "resnet",
                 "num_classes": 3,
                 "output_dir": "/analysis"
             },
-            "selected_params": {}
+            "selected_params": {
+                "input_dir": "/meshes",
+                "data_type": "resnet",
+                "task": "classification",
+                "model": "resnet",
+                "nn": "resnet",
+                "num_classes": 3,
+                "output_dir": "/analysis",
+                "log_path": ""
+            }
         },
         {
             "prompt": "Warp /mesh.vtk using butterfly method. Save to /warped_out.",
@@ -195,13 +231,47 @@
         {
             "prompt": "Approximate MRI /mri_dir to CBCT /cbct_ref. Save to /approx_out.",
             "expected_tool": "mri2cbct_approx",
-            "selected_tool": "mri2cbct_reg",
+            "selected_tool": "mri2cbct_approx",
             "expected_params": {
                 "mri_folder": "/mri_dir",
                 "cbct_folder": "/cbct_ref",
                 "output_folder": "/approx_out"
             },
-            "selected_params": {}
+            "selected_params": {
+                "name": "mri2cbct_approx",
+                "path": "/home/luciacev/Documents/AlexCodes/Agent/CLI files/MRI2CBCT_APPROX.py",
+                "description": "MRI to CBCT approximation and preprocessing for multimodal registration. Preprocesses MRI and CBCT scans with intensity normalization and spatial reorientation for subsequent multimodal registration and fusion.",
+                "tags": [
+                    "mri",
+                    "cbct",
+                    "registration",
+                    "approximation",
+                    "transformation",
+                    "multimodal",
+                    "preprocessing",
+                    "normalization"
+                ],
+                "parameters": [
+                    {
+                        "name": "cbct_folder",
+                        "type": "path",
+                        "required": true,
+                        "value": "/cbct_ref"
+                    },
+                    {
+                        "name": "mri_folder",
+                        "type": "path",
+                        "required": true,
+                        "value": "/mri_dir"
+                    },
+                    {
+                        "name": "output_folder",
+                        "type": "path",
+                        "required": true,
+                        "value": "/approx_out"
+                    }
+                ]
+            }
         },
         {
             "prompt": "Register MRI /mri to CBCT /cbct with mask /seg to /aligned.",
@@ -288,14 +358,7 @@
                 "seg_folder": "/seg",
                 "output_folder": "/tmj_out"
             },
-            "selected_params": {
-                "cbct_folder": "/cbct",
-                "mri_folder": "/mri",
-                "seg_folder": "/seg",
-                "output_folder": "/tmj_out",
-                "model_folder": "",
-                "tmp_folder": ""
-            }
+            "selected_params": {}
         },
         {
             "prompt": "Pre-ASO CBCT /data/raw using /models/aso to /aso_out.",
@@ -311,21 +374,28 @@
                 "output_folder": "/aso_out",
                 "model_folder": "/models/aso",
                 "temp_folder": "",
-                "><!-- temp_folder is not specified, so it's left blank as per the schema requirement for optional parameters. It will be filled with a default value if required by the tool.--> ": "",
                 "DCMInput": false
             }
         },
         {
             "prompt": "Standardize Upper IOS /ios with gold /ref. Output to /out.",
             "expected_tool": "pre_aso_ios",
-            "selected_tool": "semi_aso_ios",
+            "selected_tool": "pre_aso_ios",
             "expected_params": {
                 "input_folder": "/ios",
                 "gold_folder": "/ref",
                 "jaw": "Upper",
                 "output_folder": "/out"
             },
-            "selected_params": {}
+            "selected_params": {
+                "input_folder": "/ios",
+                "gold_folder": "/ref",
+                "output_folder": "/out",
+                "list_teeth": "",
+                "occlusion": true,
+                "jaw": "Upper",
+                "log_path": ""
+            }
         },
         {
             "prompt": "Orient CBCT /scans to /gold with Sella,Nasion to /oriented.",
@@ -341,10 +411,7 @@
                 "input": "/scans",
                 "gold_folder": "/gold",
                 "output_folder": "/oriented",
-                "list_landmark": [
-                    "Sella",
-                    "Nasion"
-                ]
+                "list_landmark": "Sella Nason"
             }
         },
         {
