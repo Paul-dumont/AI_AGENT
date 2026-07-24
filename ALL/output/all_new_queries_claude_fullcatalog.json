@@ -1,0 +1,14 @@
+{
+  "queries_type": "new_queries",
+  "model": "claude (full 23-tool catalog, no reranker shortlist)",
+  "metrics": {
+    "total_queries": 230,
+    "Router_accuracy_count": 228,
+    "Router_accuracy_pct": 99.13,
+    "Agent_Param_Correct_pct": 98.09,
+    "Agent_Param_Correct_count": 1130,
+    "total_expected_params": 1152,
+    "Agent_Param_Perfect_count": 214,
+    "Agent_Param_Perfect_pct": 93.04
+  }
+}

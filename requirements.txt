@@ -1,0 +1,7 @@
+numpy
+torch
+pydantic
+tqdm
+ollama
+rank_bm25
+sentence-transformers
